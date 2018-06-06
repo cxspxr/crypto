@@ -80,7 +80,7 @@ gulp.task('coffee', function(){
     webpack(
         Object.assign(webpackCommonConfig, {
             entry: {
-                index: 'app/front/index/Index'
+                index: 'app/front/home/Home'
             },
             output: {
                 filename: '[name].js',
@@ -93,7 +93,7 @@ gulp.task('coffee', function(){
         webpack(
             Object.assign(webpackCommonConfig, {
                 entry: {
-                    index: 'admin/index'
+                    dashboard: 'admin/dashboard'
                 },
                 output: {
                     filename: 'admin-[name].js',
