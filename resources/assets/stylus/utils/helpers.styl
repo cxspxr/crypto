@@ -1,0 +1,37 @@
+[v-cloak]
+    display none !important
+
+[v-cloak][vue-placeholder]
+    display inline !important
+
+.bold
+    font-weight 900
+
+.hidden
+    display none
+
+.mobile
+    +above($mobile-width)
+        display none
+
+    &--hidden
+        +below($mobile-width)
+            display none
+
+.desktop
+    +below($mobile-width)
+        display none
+
+    &--hidden
+        display none
+        +below($tablet-width)
+            display block
+
+.tablet
+    display none
+    +below($tablet-width)
+        display block
+
+    &--hidden
+        +below($tablet-width)
+            display none
