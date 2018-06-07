@@ -39,9 +39,8 @@ var webpackCommonConfig = {
             Front: path.resolve(__dirname, coffeePath + 'app/front/components/')
         }
     },
-    plugins: plugins[env].concat([
-        new webpack.optimize.CommonsChunkPlugin({name:'common'})
-    ]),
+    plugins: plugins[env],
+    mode: env,
     module: {
         rules: [
             {
@@ -64,7 +63,18 @@ var webpackCommonConfig = {
             }
         ]
     },
-    devtool: argv.dev ? 'cheap-inline-source-map' : false
+    devtool: argv.dev ? 'cheap-inline-source-map' : false,
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "common",
+                    chunks: "all"
+                }
+            }
+        }
+    }
 };
 
 var webpackCallback = function(err, stats) {

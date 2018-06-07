@@ -15,3 +15,5 @@ yarn-error.log
 composer-lock.json
 package-lock.json
 gulp/.server
+public/css
+public/js
