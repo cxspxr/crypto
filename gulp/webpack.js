@@ -40,6 +40,11 @@ var webpackCommonConfig = {
         }
     },
     plugins: plugins[env],
+    node: {
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty'    
+    },
     mode: env,
     module: {
         rules: [
