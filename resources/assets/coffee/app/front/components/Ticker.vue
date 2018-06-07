@@ -21,4 +21,11 @@ export default
 
         w.onopen = () =>
             console.log 'connected'
+            sendTicker = () =>
+                if w.readyState is w.OPEN
+                    w.send 'tBTCUSD'
+                    setTimeout(sendTicker, 10000);
+
+            do sendTicker
+
 </script>
