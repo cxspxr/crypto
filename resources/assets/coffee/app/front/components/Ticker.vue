@@ -1,8 +1,12 @@
 <template lang="pug">
     .ticker(v-cloak)
+        .ticker-circle(ref="circle")
         .ticker-name {{ ticker.name }}
         .ticker-price(ref="price") {{ animatedPrice }}
         .ticker-change(:class='changeClass') {{ animatedChange }}%
+        input.ticker-input(type="text", v-model="amountToSell")
+        .ticker-approx(v-if="tweenedApprox < 10000000000", ref="approx") {{ tweenedApprox }}
+        .ticker-approx(v-else) JACKPOT
 
 </template>
 
@@ -13,21 +17,23 @@ import $ from 'jquery'
 
 export default
 
-    props: ['ticker']
+    props: ['ticker', 'ws']
 
     data: ->
         price: 0
         change: 0
-        tweenedNumber: 0
+        tweenedPrice: 0
         tweenedChange: 0
         initiated: false
+        amountToSell: 1
+        tweenedApprox: 0
         changeClass:
             'ticker-change--green': @isPositiveChange
             'ticker-change--red': !@isPositiveChange
 
     methods:
-        animatePrice: (classname) ->
-            $(@$refs.price)
+        animate: (ref, classname) ->
+            $(@$refs[ref])
                 .addClass(classname)
                 .delay(1000)
                 .queue( (next) ->
@@ -35,50 +41,61 @@ export default
                     do next
                 )
 
+        reflectWS: ->
+            @price = parseFloat(@ws[6].toPrecision 5)
+            @change = +(@ws[5] * 100).toFixed 2
+            if !@initiated
+                @tweenedChange = @change
+                @tweenedPrice = @price
+            @tweenedApprox = (@price * @amountToSell).toFixed 2
+
+        tweenIt: (k, v) ->
+            obj = {}
+            obj[k] = v
+            time = 1
+            TweenLite.to @$data, time, obj
+
+
     watch:
+        ws: () -> do @reflectWS
+
         price: (value, oldValue) ->
             if @initiated
-                TweenLite.to @$data, 1,
-                    tweenedNumber: value
+                @tweenIt 'tweenedPrice', value
+                @tweenIt 'tweenedApprox', (value * @amountToSell).toFixed 2
 
                 if value > oldValue
-                    @animatePrice 'ticker-price--green'
+                    @animate 'price', 'ticker-price--green'
+                    @animate 'approx', 'ticker-price--green'
+                    @animate 'circle', 'ticker-circle--green'
 
-                else if oldValue < value
-                    @animatePrice 'ticker-price--red'
+                else if oldValue > value
+                    @animate 'price', 'ticker-price--red'
+                    @animate 'approx', 'ticker-price--red'
+                    @animate 'circle', 'ticker-circle--red'
+
             else
                 @initiated = true
 
         change: (value) ->
-            TweenLite.to @$data, 1,
-                tweenedChange: value
+            @tweenIt 'change', value
+
+        amountToSell: (value, oldValue) ->
+            @amountToSell = @amountToSell.toString().replace /[^0-9.]/g, ''
+            @tweenedApprox = (value * @price).toFixed 2
 
     computed:
         isPositiveChange: -> @change >= 0
+
         animatedPrice: ->
-            if @tweenedNumber
-                @tweenedNumber.toFixed 2
+            if @tweenedPrice
+                @tweenedPrice.toPrecision 5
 
         animatedChange: ->
             if @tweenedChange
-                @tweenedChange.toFixed 3
+                @tweenedChange.toFixed 2
 
-    mounted: ->
-        connection.addEventListener "message", (e) =>
-            ary = JSON.parse e.data
-            if ary[@ticker.ticker]
-                @price = +ary[@ticker.ticker][6].toFixed 2
-                @change = +ary[@ticker.ticker][5].toFixed 3
-                @tweenedChange = @change
-                @tweenedNumber = @price
-
-        connection.addEventListener "open", () =>
-            sendTicker = () =>
-                if connection.readyState is connection.OPEN
-                    connection.send @ticker.ticker
-                    setTimeout sendTicker, 10000
-
-            do sendTicker
+    mounted: -> do @reflectWS
 
 </script>
 
@@ -86,6 +103,24 @@ export default
 
 .ticker
     display flex
+
+    &-circle
+        border-radius 100%
+        margin-top 3px
+        height 10px
+        width 10px
+        opacity 0
+        background-color white
+        transition all 1s ease
+        margin-right 10px
+
+        &--red
+            background-color red
+            opacity 1
+
+        &--green
+            background-color green
+            opacity 1
 
     &-name
     &-price

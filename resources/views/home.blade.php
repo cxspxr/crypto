@@ -4,7 +4,7 @@
 
 <div id="tickers">
     @foreach($tickers as $ticker)
-        <ticker :ticker="{{ $ticker }}"></ticker>
+        <ticker :ticker="{{ $ticker }}" :ws="tickers['{{ $ticker->ticker }}']"></ticker>
     @endforeach
 </div>
 
@@ -13,9 +13,7 @@
 
 @section('scripts')
     <script>
-        window.WebSocket = window.WebSocket || window.MozWebSocket;
-
-        var connection = new WebSocket('{{ $websocket }}');
+        var websocket = '{{ $websocket }}';
     </script>
     <script src="{{ asset('js/home.js') }}"></script>
 
