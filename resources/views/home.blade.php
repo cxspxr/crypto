@@ -3,7 +3,9 @@
 @section('content')
 
 <div id="tickers">
-    <ticker pair="tBTCUSD"></ticker>
+    @foreach($tickers as $ticker)
+        <ticker :ticker="{{ $ticker }}"></ticker>
+    @endforeach
 </div>
 
 @endsection
