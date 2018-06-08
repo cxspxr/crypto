@@ -19,7 +19,7 @@ export default
         w.onmessage = (e) =>
             console.log e.data
 
-        w.onopen = () =>
+        w.onopen = () =>    
             console.log 'connected'
             sendTicker = () =>
                 if w.readyState is w.OPEN

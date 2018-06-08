@@ -12,8 +12,8 @@ class TickerTableSeeder extends Seeder
      */
     public function run()
     {
-        Ticker::create(['name' => 'tBTCUSD']);
-        Ticker::create(['name' => 'tLTCUSD']);
-        Ticker::create(['name' => 'tETHUSD']);
+        Ticker::create(['name' => 'Bitcoin', 'ticker' => 'tBTCUSD']);
+        Ticker::create(['name' => 'Litecoin', 'ticker' => 'tLTCUSD']);
+        Ticker::create(['name' => 'Ethereum', 'ticker' => 'tETHUSD']);
     }
 }
