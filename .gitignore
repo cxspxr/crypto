@@ -17,3 +17,5 @@ package-lock.json
 gulp/.server
 public/css
 public/js
+public/package-lock.json
+public/node_modules

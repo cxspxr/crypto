@@ -6,25 +6,20 @@
 
 <script lang="coffee">
 
-ws = require('websocket').w3cwebsocket
-
-
 export default
 
     props: ['pair']
 
     mounted: ->
-        w = new ws 'ws://localhost:1337/', null
 
-        w.onmessage = (e) =>
+        connection.onmessage = (e) =>
             console.log e.data
 
-        w.onopen = () =>    
+        connection.onopen = () =>
             console.log 'connected'
             sendTicker = () =>
-                if w.readyState is w.OPEN
-                    w.send 'tBTCUSD'
-                    setTimeout(sendTicker, 10000);
+                connection.send 'tBTCUSD'
+                setTimeout(sendTicker, 10000);
 
             do sendTicker
 
