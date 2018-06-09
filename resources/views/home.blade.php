@@ -14,6 +14,7 @@
 @section('scripts')
     <script>
         var websocket = '{{ $websocket }}';
+        var config = {!! $config !!};
     </script>
     <script src="{{ asset('js/home.js') }}"></script>
 

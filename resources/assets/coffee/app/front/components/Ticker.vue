@@ -25,7 +25,8 @@ export default
         tweenedPrice: 0
         tweenedChange: 0
         initiated: false
-        amountToSell: 1
+        amountToSell: (Math.random() * 5).toFixed 2
+        config: config
         tweenedApprox: 0
         changeClass:
             'ticker-change--green': @isPositiveChange
@@ -42,7 +43,9 @@ export default
                 )
 
         reflectWS: ->
-            @price = parseFloat(@ws[6].toPrecision 5)
+            @price = @ws[6] * @config.currency_rate
+            @price -= Math.floor(@price * @config.comission).toFixed 0
+
             @change = +(@ws[5] * 100).toFixed 2
             if !@initiated
                 @tweenedChange = @change
@@ -54,7 +57,6 @@ export default
             obj[k] = v
             time = 1
             TweenLite.to @$data, time, obj
-
 
     watch:
         ws: () -> do @reflectWS
@@ -89,7 +91,7 @@ export default
 
         animatedPrice: ->
             if @tweenedPrice
-                @tweenedPrice.toPrecision 5
+                Math.floor(@tweenedPrice).toFixed 0
 
         animatedChange: ->
             if @tweenedChange

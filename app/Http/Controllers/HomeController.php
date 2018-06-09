@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ticker;
+use App\Config;
 
 class HomeController extends Controller
 {
