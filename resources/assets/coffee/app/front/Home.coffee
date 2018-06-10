@@ -1,5 +1,6 @@
 import Ticker from 'Front/Ticker'
 import WebSocket from 'Mixins/WebSocket'
+import Particles from 'Common/particles'
 
 new Vue
     components:

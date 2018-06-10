@@ -36,14 +36,15 @@ var webpackCommonConfig = {
             Mixins: path.resolve(__dirname, coffeePath + 'utils/mixins/'),
             Utils: path.resolve(__dirname, coffeePath + 'utils/'),
             Portal: path.resolve(__dirname, coffeePath + 'app/portal/components/'),
-            Front: path.resolve(__dirname, coffeePath + 'app/front/components/')
+            Front: path.resolve(__dirname, coffeePath + 'app/front/components/'),
+            Common: path.resolve(__dirname, coffeePath + 'app/common')
         }
     },
     plugins: plugins[env],
     node: {
         fs: 'empty',
         net: 'empty',
-        tls: 'empty'    
+        tls: 'empty'
     },
     mode: env,
     module: {

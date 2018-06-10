@@ -51,7 +51,8 @@ export default
 
         reflectWS: ->
             @price = @ws[6] * @config.currency_rate
-            @price -= Math.floor(@price * @config.comission).toFixed 0
+            @price -= @price * @config.comission
+            @price = Math.floor(@price).toFixed 0
 
             @change = +(@ws[5] * 100).toFixed 2
             if !@initiated
@@ -80,8 +81,8 @@ export default
                     @animate 'circle', 'has-background-success'
 
                 else if oldValue > value
-                    @animate 'price', 'has-text-success'
-                    @animate 'approx', 'has-text-success'
+                    @animate 'price', 'has-text-danger'
+                    @animate 'approx', 'has-text-danger'
                     @animate 'circle', 'has-background-danger'
 
             else

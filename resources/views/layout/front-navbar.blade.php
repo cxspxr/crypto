@@ -1,5 +1,11 @@
 @if($mode == 'hero')
 <section class="hero is-dark is-bold is-fullheight">
+    <div class="particles-filter mobile--hidden"></div>
+    <div id="particles" class="mobile--hidden">
+        <vue-particles
+            :particles-number="10"
+        ></vue-particles>
+    </div>
     <div class="hero-head">
 @endif
         <div class="navbar">
