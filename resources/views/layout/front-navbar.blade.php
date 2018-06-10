@@ -9,14 +9,14 @@
                         <img src="{{ asset('img/logo.png') }}" alt="">
                     </a>
 
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
                       <span aria-hidden="true"></span>
                       <span aria-hidden="true"></span>
                       <span aria-hidden="true"></span>
                     </a>
                 </div>
 
-                <div class="navbar-menu">
+                <div class="navbar-menu" id="navMenu">
                     <div class="navbar-end">
                         <div class="tabs">
                             <ul>
@@ -31,6 +31,12 @@
                                 </li>
                                 <li class="@isRoute('contact')">
                                     <a href="{{ route('contact') }}">Контакты</a>
+                                </li>
+                                <li class="@isRoute('auth.login') bulma-mobile--visible">
+                                    <a href="{{ route('auth.login') }}">Вход</a>
+                                </li>
+                                <li class="@isRoute('auth.register') bulma-mobile--visible">
+                                    <a href="{{ route('auth.register') }}">Регистрация</a>
                                 </li>
                             </ul>
                         </div>

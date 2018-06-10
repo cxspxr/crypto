@@ -9,6 +9,14 @@
     .tabs
         font-size 1.2rem
 
+        +below($bulma-mobile)
+            &
+            ul
+                display block
+
+            ul
+                padding-bottom 1px
+
         ul
             border-bottom 0
 
@@ -22,10 +30,20 @@
             border-bottom-color $primary
 
     &-logo
+        padding-bottom 10px
         img
             width 80px
 
+            +below($bulma-mobile)
+                width 60px
+
+            +below($mobile-width)
+                width 50px
+
     &-auth
+        +below($bulma-mobile)
+            display none
+
         .navbar-item
             color darken($light, 10%)!important
             &:hover
