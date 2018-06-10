@@ -1,13 +1,26 @@
 @extends('layout.front')
 
 @section('content')
+<section class="container">
+    <div id="tickers" v-cloak>
+        <table class="table is-striped is-hoverable is-fullwidth">
+            <thead>
+                <th></th>
+                <th>Валюта</th>
+                <th>Цена</th>
+                <th>24ч. изменение</th>
+                <th class="mobile--hidden">Продашь</th>
+                <th class="mobile--hidden">Получишь</th>
+            </thead>
+            <tbody>
+                @foreach($tickers as $ticker)
+                    <tr is="ticker" :ticker="{{ $ticker }}" :ws="tickers['{{ $ticker->ticker }}']"></tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
-<div id="tickers">
-    @foreach($tickers as $ticker)
-        <ticker :ticker="{{ $ticker }}" :ws="tickers['{{ $ticker->ticker }}']"></ticker>
-    @endforeach
-</div>
-
+</section>
 @endsection
 
 

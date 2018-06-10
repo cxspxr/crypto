@@ -1,12 +1,15 @@
 <template lang="pug">
-    .ticker(v-cloak)
-        .ticker-circle(ref="circle")
-        .ticker-name {{ ticker.name }}
-        .ticker-price(ref="price") {{ animatedPrice }}
-        .ticker-change(:class='changeClass') {{ animatedChange }}%
-        input.ticker-input(type="text", v-model="amountToSell")
-        .ticker-approx(v-if="tweenedApprox < 10000000000", ref="approx") {{ tweenedApprox }}
-        .ticker-approx(v-else) JACKPOT
+    tr.ticker
+        td.ticker-circle-td.has-text-centered
+            figure.ticker-circle(ref="circle")
+        td.ticker-name {{ ticker.name }}
+        td.ticker-price(ref="price") {{ spacesInPrice(animatedPrice) }} руб.
+        td.ticker-change(:class='changeClass') {{ animatedChange }}%
+        td.mobile--hidden
+            input.ticker-input.input.is-primary(type="text", v-model="amountToSell")
+        td.mobile--hidden.ticker-approx(v-if="tweenedApprox < 100000000", ref="approx")
+            | {{ spacesInPrice(tweenedApprox) }} руб.
+        td.mobile--hidden.ticker-approx(v-else) JACKPOT
 
 </template>
 
@@ -25,14 +28,18 @@ export default
         tweenedPrice: 0
         tweenedChange: 0
         initiated: false
-        amountToSell: (Math.random() * 5).toFixed 2
+        amountToSell: 1
         config: config
         tweenedApprox: 0
         changeClass:
-            'ticker-change--green': @isPositiveChange
-            'ticker-change--red': !@isPositiveChange
+            'has-text-success': @isPositiveChange
+            'has-text-danger': !@isPositiveChange
 
     methods:
+        spacesInPrice: (s) ->
+            if s
+                s.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+
         animate: (ref, classname) ->
             $(@$refs[ref])
                 .addClass(classname)
@@ -50,6 +57,7 @@ export default
             if !@initiated
                 @tweenedChange = @change
                 @tweenedPrice = @price
+                @amountToSell = (1000 / @price).toPrecision 8
             @tweenedApprox = (@price * @amountToSell).toFixed 2
 
         tweenIt: (k, v) ->
@@ -67,14 +75,14 @@ export default
                 @tweenIt 'tweenedApprox', (value * @amountToSell).toFixed 2
 
                 if value > oldValue
-                    @animate 'price', 'ticker-price--green'
-                    @animate 'approx', 'ticker-price--green'
-                    @animate 'circle', 'ticker-circle--green'
+                    @animate 'price', 'has-text-success'
+                    @animate 'approx', 'has-text-success'
+                    @animate 'circle', 'has-background-success'
 
                 else if oldValue > value
-                    @animate 'price', 'ticker-price--red'
-                    @animate 'approx', 'ticker-price--red'
-                    @animate 'circle', 'ticker-circle--red'
+                    @animate 'price', 'has-text-success'
+                    @animate 'approx', 'has-text-success'
+                    @animate 'circle', 'has-background-danger'
 
             else
                 @initiated = true
@@ -104,29 +112,22 @@ export default
 <style lang="stylus" scoped>
 
 .ticker
-    display flex
+    td
+        vertical-align middle
+
+    &-input
+        width 200px
 
     &-circle
         border-radius 100%
-        margin-top 3px
-        height 10px
-        width 10px
-        opacity 0
-        background-color white
+        height 13px
+        width 13px
+        background-color none
         transition all 1s ease
-        margin-right 10px
+        margin auto
 
-        &--red
-            background-color red
-            opacity 1
-
-        &--green
-            background-color green
-            opacity 1
-
-    &-name
-    &-price
-        margin-right 20px
+        &-td
+            padding 0
 
     &-change
     &-price

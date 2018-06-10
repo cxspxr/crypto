@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     @yield('head')
