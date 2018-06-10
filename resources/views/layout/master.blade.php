@@ -4,4 +4,6 @@
 
 @yield('content')
 
+@yield('footer')
+
 @include('layout.footer')

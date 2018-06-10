@@ -22,7 +22,6 @@ new Vue
         ws = WebSocket(onmessage)
 
 document.addEventListener 'DOMContentLoaded', () ->
-    document.getElementById('date').innerHTML = (new Date()).getFullYear()
 
     $navbarBurgers = Array.prototype.slice.call document.querySelectorAll('.navbar-burger'), 0
 

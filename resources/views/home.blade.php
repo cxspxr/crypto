@@ -1,4 +1,4 @@
-@extends('layout.front', ['mode' => 'hero'])
+@extends('layout.front')
 
 @section('content')
 <div class="hero-body">
@@ -10,10 +10,10 @@
                     <thead>
                         <th></th>
                         <th>Валюта</th>
-                        <th>Цена</th>
+                        <th>Цена (~)</th>
                         <th class="mobile--hidden">24ч.</th>
                         <th class="mobile--hidden">Продашь</th>
-                        <th class="mobile--hidden">Получишь</th>
+                        <th class="mobile--hidden">Получишь (~)</th>
                     </thead>
                     <tbody>
                         @foreach($tickers as $ticker)
