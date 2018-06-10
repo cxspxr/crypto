@@ -1,20 +1,32 @@
 .navbar
-    display flex
-    justify-content space-between
-    max-width $tablet-width
-    margin auto
-    padding 30px 5px
+    padding 20px 15px 0
+    font-size 1.2rem
+
+    &-item
+        &:hover
+            background-color inherit !important
+
+    .tabs
+        font-size 1.2rem
+
+        ul
+            border-bottom 0
+
+        .is-active
+            a
+                &
+                &:hover
+                    border-bottom-color $primary
+
+        a:hover
+            border-bottom-color $primary
 
     &-logo
         img
             width 80px
 
-    &-right
-        display flex
-        font-size 1.2rem
-        align-items center
-
-    &-link
-        &
-        &--auth
-            padding 0 10px
+    &-auth
+        .navbar-item
+            color darken($light, 10%)!important
+            &:hover
+                color $light!important

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use View;
 use App\Config;
+use Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with(compact('config'));
         });
+
+        $this->registerBladeDirectives();
     }
 
     /**
@@ -30,5 +33,12 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    public function registerBladeDirectives()
+    {
+        Blade::directive('isRoute', function ($name) {
+            return "<?php echo Route::is($name) ? 'is-active' : '';?>";
+        });
     }
 }

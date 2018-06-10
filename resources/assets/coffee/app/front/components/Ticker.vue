@@ -4,7 +4,7 @@
             figure.ticker-circle(ref="circle")
         td.ticker-name {{ ticker.name }}
         td.ticker-price(ref="price") {{ spacesInPrice(animatedPrice) }} руб.
-        td.ticker-change(:class='changeClass') {{ animatedChange }}%
+        td.mobile--hidden.ticker-change(:class='changeClass') {{ animatedChange }}%
         td.mobile--hidden
             input.ticker-input.input.is-primary(type="text", v-model="amountToSell")
         td.mobile--hidden.ticker-approx(v-if="tweenedApprox < 100000000", ref="approx")
@@ -117,6 +117,8 @@ export default
 
     &-input
         width 200px
+        background-color transparent
+        color white
 
     &-circle
         border-radius 100%

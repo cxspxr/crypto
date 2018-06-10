@@ -1,18 +1,48 @@
-<div class="navbar">
-    <a href="{{ route('home') }}" class="navbar-logo">
-        <img src="{{ asset('img/logo.png') }}" alt="">
-    </a>
+@if($mode == 'hero')
+<section class="hero is-dark is-bold is-fullheight">
+    <div class="hero-head">
+@endif
+        <div class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="{{ route('home') }}" class="navbar-logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="">
+                    </a>
 
-    <div class="navbar-right">
-        <nav class="navbar-menu">
-            <a href="{{ route('sell') }}" class="navbar-link">Продажа</a>
-            <a href="{{ route('rules') }}" class="navbar-link">Правила</a>
-            <a href="{{ route('contact') }}" class="navbar-link">Контакты</a>
-        </nav>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                      <span aria-hidden="true"></span>
+                      <span aria-hidden="true"></span>
+                      <span aria-hidden="true"></span>
+                    </a>
+                </div>
 
-        <div class="navbar-auth">
-            <a href="{{ route('auth.login') }}" class="navbar-link--auth">Вход</a>
-            <a href="{{ route('auth.signup') }}" class="navbar-link--auth">Регистрация</a>
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <div class="tabs">
+                            <ul>
+                                <li class="@isRoute('home')">
+                                    <a href="{{ route('home') }}">Главная</a>
+                                </li>
+                                <li class="@isRoute('sell')">
+                                    <a href="{{ route('sell') }}">Продажа</a>
+                                </li>
+                                <li class="@isRoute('rules')">
+                                    <a href="{{ route('rules') }}">Правила</a>
+                                </li>
+                                <li class="@isRoute('contact')">
+                                    <a href="{{ route('contact') }}">Контакты</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="navbar-end navbar-auth">
+                        <a class="navbar-item" href="{{ route('auth.login') }}">Вход</a>
+                        <a class="navbar-item" href="{{ route('auth.signup') }}">Регистрация</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+
+@if($mode == 'hero')
 </div>
+@endif
