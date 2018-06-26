@@ -78,4 +78,13 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
+
+    protected function mapPortalRoutes()
+    {
+        Route::name('portal')
+            ->prefix('portal')
+            ->middleware('auth')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/portal.php'));
+    }
 }

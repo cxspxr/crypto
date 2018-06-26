@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('navbar')
-    @include('layout.portal-navbar')
+    @include('layout.navbar')
 @endsection
 
 @section('foot')

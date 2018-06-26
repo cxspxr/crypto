@@ -8,7 +8,7 @@
                 :particles-number="10"
             ></vue-particles>
         </div>
-    @include('layout.front-navbar')
+    @include('layout.navbar')
 @endsection
 
 
