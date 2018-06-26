@@ -1,7 +1,3 @@
 <?php
 
-Route::group([
-    'as' => 'portal.'
-], function () {
-    
-});
+Route::get('dashboard', 'PortalController@index')->name('dashboard');

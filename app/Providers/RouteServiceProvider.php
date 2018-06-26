@@ -41,6 +41,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAuthRoutes();
         //
+        $this->mapPortalRoutes();
     }
 
     /**
@@ -83,7 +84,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::name('portal')
             ->prefix('portal')
-            ->middleware('auth')
+            ->middleware(['web', 'auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/portal.php'));
     }

@@ -40,7 +40,7 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        return route('home');
+        return route('portal.dashboard');
     }
 
 
