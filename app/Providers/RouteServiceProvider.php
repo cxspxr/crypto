@@ -82,7 +82,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapPortalRoutes()
     {
-        Route::name('portal')
+        Route::name('portal.')
             ->prefix('portal')
             ->middleware(['web', 'auth'])
             ->namespace($this->namespace)

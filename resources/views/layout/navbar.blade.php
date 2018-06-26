@@ -20,6 +20,11 @@
                             <li class="@isRoute('home')">
                                 <a href="{{ route('home') }}">Главная</a>
                             </li>
+                            @auth('web')
+                                <li class="@isRoute('portal.dashboard')">
+                                    <a href="{{ route('portal.dashboard') }}">Аккаунт</a>
+                                </li>
+                            @endauth
                             <li class="@isRoute('sell')">
                                 <a href="{{ route('sell') }}">Продажа</a>
                             </li>
@@ -29,7 +34,7 @@
                             <li class="@isRoute('contact')">
                                 <a href="{{ route('contact') }}">Контакты</a>
                             </li>
-                            @auth
+                            @auth('web')
                                 <li class="bulma-mobile--visible">
                                     <a href="{{ route('logout') }}">Выход</a>
                                 </li>
