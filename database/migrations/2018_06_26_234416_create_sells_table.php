@@ -20,8 +20,14 @@ class CreateSellsTable extends Migration
 
             $table->unsignedInteger('status_id');
 
+            $table->string('wallet');
+
+            $table->unsignedInteger('ticker_id');
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
+
+            $table->foreign('ticker_id')->references('id')->on('tickers')->onDelete('cascade');
             $table->timestamps();
         });
     }

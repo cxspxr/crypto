@@ -4,7 +4,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Sell::class, function (Faker $faker) {
     return [
-        'user_id' => factory(App\User::class)->create()->id,
-        'status_id' => App\Status::firstOrCreate(['name' => 'PROCESSING'])->id
+        'user_id' => App\User::inRandomOrder()->first()->id,
+        'status_id' => App\Status::inRandomOrder()->first()->id,
+        'wallet' => Hash::make(str_random(230)),
+        'ticker_id' => App\Ticker::inRandomOrder()->first()->id
     ];
 });
