@@ -15,4 +15,12 @@ class Sell extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($sell) {
+            $sell->status_id = Status::whereName('processing')->first()->id;
+        });
+    }
 }
