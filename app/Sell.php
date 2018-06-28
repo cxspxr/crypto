@@ -27,12 +27,12 @@ class Sell extends Model
         self::creating(function ($sell) {
             $sell->status_id = Status::whereName('processing')->first()->id;
 
-            $existingSell = Sell::whereWallet($sell->wallet)
+            $existingSell = Sell::whereTransaction($sell->transaction)
                 ->whereHas('ticker', function ($query) use ($sell) {
                     $query->whereTicker($sell->ticker->ticker);
                 })
                 ->whereHas('status', function ($query) {
-                    $query->where('name', '<>', 'executed');
+                    $query->whereNotIn('name', ['executed', 'cancelled']);
                 })->first();
 
             if ($existingSell) {

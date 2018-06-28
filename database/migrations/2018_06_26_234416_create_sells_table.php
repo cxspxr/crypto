@@ -20,7 +20,7 @@ class CreateSellsTable extends Migration
 
             $table->unsignedInteger('status_id');
 
-            $table->string('wallet');
+            $table->string('transaction');
 
             $table->unsignedInteger('ticker_id');
 
