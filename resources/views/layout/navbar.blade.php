@@ -25,8 +25,8 @@
                                     <a href="{{ route('portal.dashboard') }}">Аккаунт</a>
                                 </li>
                             @endauth
-                            <li class="@isRoute('sell')">
-                                <a href="{{ route('sell') }}">Продажа</a>
+                            <li class="@isRoute('portal.sell')">
+                                <a href="{{ route('portal.sell') }}">Продажа</a>
                             </li>
                             <li class="@isRoute('rules')">
                                 <a href="{{ route('rules') }}">Правила</a>

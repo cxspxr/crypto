@@ -11,6 +11,17 @@
     @include('layout.navbar')
 @endsection
 
+@section('body')
+
+<section class="hero-body">
+    <div class="container">
+        @yield('content')
+
+    </div>
+</section>
+
+@endsection
+
 
 @section('footer')
         <section class="hero-footer">

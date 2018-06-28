@@ -2,7 +2,7 @@
 
 @yield('navbar')
 
-@yield('content')
+@yield('body')
 
 @yield('footer')
 
