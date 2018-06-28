@@ -15,7 +15,6 @@ class CreateConfigsTable extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('comission');
             $table->double('currency_rate');
             $table->timestamps();
         });

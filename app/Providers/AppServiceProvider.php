@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use View;
 use App\Config;
+use App\Commission;
 use Blade;
 
 class AppServiceProvider extends ServiceProvider
@@ -18,8 +19,9 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $config = Config::first();
+            $commission = Commission::whereFrom(0.0)->first()->commission;
 
-            $view->with(compact('config'));
+            $view->with(compact('config', 'commission'));
         });
 
         $this->registerBladeDirectives();

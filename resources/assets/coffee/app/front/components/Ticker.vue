@@ -3,12 +3,12 @@
         td.ticker-circle-td.has-text-centered
             figure.ticker-circle(ref="circle")
         td.ticker-name {{ ticker.name }}
-        td.ticker-price(ref="price") {{ spacesInPrice(animatedPrice) }} руб.
+        td.ticker-price(ref="price") от {{ spacesInPrice(animatedPrice) }} руб.
         td.mobile--hidden.ticker-change(:class='changeClass') {{ animatedChange }}%
         td.mobile--hidden
             input.ticker-input.input.is-primary(type="text", v-model="amountToSell")
         td.mobile--hidden.ticker-approx(v-if="tweenedApprox < 100000000", ref="approx")
-            | {{ spacesInPrice(tweenedApprox) }} руб.
+            | от {{ spacesInPrice(tweenedApprox) }} руб.
         td.mobile--hidden.ticker-approx(v-else) JACKPOT
 
 </template>
@@ -30,6 +30,7 @@ export default
         initiated: false
         amountToSell: 1
         config: config
+        commission: commission
         tweenedApprox: 0
         changeClass:
             'has-text-success': @isPositiveChange
@@ -51,7 +52,7 @@ export default
 
         reflectWS: ->
             @price = @ws[6] * @config.currency_rate
-            @price -= @price * @config.comission
+            @price -= @price * @commission
             @price = Math.floor(@price).toFixed 0
 
             @change = +(@ws[5] * 100).toFixed 2

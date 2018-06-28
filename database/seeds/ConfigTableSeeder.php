@@ -13,8 +13,7 @@ class ConfigTableSeeder extends Seeder
     public function run()
     {
         Config::create([
-            'currency_rate' => 65,
-            'comission' => 0.1
+            'currency_rate' => 65
         ]);
     }
 }

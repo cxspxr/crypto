@@ -31,9 +31,6 @@ class Sell extends Model
             $existingSell = Sell::whereTransaction($sell->transaction)
                 ->whereHas('ticker', function ($query) use ($sell) {
                     $query->whereTicker($sell->ticker->ticker);
-                })
-                ->whereHas('status', function ($query) {
-                    $query->whereNotIn('name', ['executed', 'cancelled']);
                 })->first();
 
             if ($existingSell) {
@@ -44,7 +41,9 @@ class Sell extends Model
         self::created(function ($sell) {
             Redis::publish('sell', json_encode([
                 'transaction' => $sell->transaction,
-                'ticker' => $sell->ticker->ticker
+                'ticker' => $sell->ticker->ticker,
+                'user' => $sell->user->id,
+                'ticker_id' => $sell->ticker->id
             ]));
         });
     }
