@@ -17,6 +17,7 @@ class CreateTickersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('ticker')->unique();
+            $table->string('wallet');
 
             $table->timestamps();
         });

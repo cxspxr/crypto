@@ -12,23 +12,23 @@ class TickerTableSeeder extends Seeder
      */
     public function run()
     {
-        Ticker::create(['name' => 'Bitcoin', 'ticker' => 'tBTCUSD']);
-        Ticker::create(['name' => 'Litecoin', 'ticker' => 'tLTCUSD']);
-        Ticker::create(['name' => 'Ethereum', 'ticker' => 'tETHUSD']);
-        Ticker::create(['name' => 'EOS', 'ticker' => 'tEOSUSD']);
-        Ticker::create(['name' => 'Bitcoin Cash', 'ticker' => 'tBCHUSD']);
-        Ticker::create(['name' => 'Iota', 'ticker' => 'tIOTUSD']);
-        Ticker::create(['name' => 'Ripple', 'ticker' => 'tXRPUSD']);
-        Ticker::create(['name' => 'NEO', 'ticker' => 'tNEOUSD']);
-        Ticker::create(['name' => 'Monero', 'ticker' => 'tXMRUSD']);
-        Ticker::create(['name' => 'ZCash', 'ticker' => 'tZECUSD']);
-        Ticker::create(['name' => 'OMG', 'ticker' => 'tOMGUSD']);
-        Ticker::create(['name' => 'Bitcoin Gold', 'ticker' => 'tBTGUSD']);
-        Ticker::create(['name' => 'Tron', 'ticker' => 'tTRXUSD']);
-        Ticker::create(['name' => '0x', 'ticker' => 'tZRXUSD']);
-        Ticker::create(['name' => 'Quantum', 'ticker' => 'tQTMUSD']);
-        Ticker::create(['name' => 'Verge', 'ticker' => 'tXVGUSD']);
-        Ticker::create(['name' => 'ELF', 'ticker' => 'tELFUSD']);
-        Ticker::create(['name' => 'FUN', 'ticker' => 'tFUNUSD']);
+        Ticker::create(['name' => 'Bitcoin', 'ticker' => 'tBTCUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Litecoin', 'ticker' => 'tLTCUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Ethereum', 'ticker' => 'tETHUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'EOS', 'ticker' => 'tEOSUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Bitcoin Cash', 'ticker' => 'tBCHUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Iota', 'ticker' => 'tIOTUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Ripple', 'ticker' => 'tXRPUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'NEO', 'ticker' => 'tNEOUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Monero', 'ticker' => 'tXMRUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'ZCash', 'ticker' => 'tZECUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'OMG', 'ticker' => 'tOMGUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Bitcoin Gold', 'ticker' => 'tBTGUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Tron', 'ticker' => 'tTRXUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => '0x', 'ticker' => 'tZRXUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Quantum', 'ticker' => 'tQTMUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'Verge', 'ticker' => 'tXVGUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'ELF', 'ticker' => 'tELFUSD', 'wallet' => Hash::make(str_random(120))]);
+        Ticker::create(['name' => 'FUN', 'ticker' => 'tFUNUSD', 'wallet' => Hash::make(str_random(120))]);
     }
 }
