@@ -16,5 +16,6 @@ class StatusTableSeeder extends Seeder
         Status::create(['name' => 'filled']);
         Status::create(['name' => 'cancelled']);
         Status::create(['name' => 'executed']);
+        Status::create(['name' => 'complete']);
     }
 }
