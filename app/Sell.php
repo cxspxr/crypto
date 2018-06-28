@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Redis;
 
 class Sell extends Model
 {
@@ -38,6 +39,13 @@ class Sell extends Model
             if ($existingSell) {
                 abort(403);
             }
+        });
+
+        self::created(function ($sell) {
+            Redis::publish('sell', json_encode([
+                'transaction' => $sell->transaction,
+                'ticker' => $sell->ticker->ticker
+            ]));
         });
     }
 }
