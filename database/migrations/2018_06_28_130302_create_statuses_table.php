@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSellsTable extends Migration
+class CreateStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class CreateSellsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sells', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->unsignedInteger('user_id');
-
-            $table->unsignedInteger('status_id');
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
+            $table->string("name");
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ class CreateSellsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sells');
+        Schema::dropIfExists('statuses');
     }
 }
