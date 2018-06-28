@@ -1,1 +1,5 @@
-document.getElementById('date').innerHTML = (new Date()).getFullYear()
+
+
+Vue.use Buefy.default,
+    defaultIconPack: 'fa',
+    defaultContainerElement: '#content'

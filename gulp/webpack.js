@@ -99,7 +99,8 @@ gulp.task('coffee', function(){
                 home: 'app/front/Home',
                 front: 'app/front/Front',
                 portal: 'app/portal/Portal',
-                commons: 'app/common/Common'
+                commons: 'app/common/Common',
+                sell: 'app/portal/Sell'
             },
             output: {
                 filename: '[name].js',
