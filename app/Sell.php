@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Redis;
+use Auth;
 
 class Sell extends Model
 {
@@ -29,12 +30,18 @@ class Sell extends Model
             $sell->status_id = Status::whereName('processing')->first()->id;
 
             $existingSell = Sell::whereTransaction($sell->transaction)
-                ->whereHas('ticker', function ($query) use ($sell) {
-                    $query->whereTicker($sell->ticker->ticker);
-                })->first();
+                ->where('ticker_id', $sell->ticker_id)
+                ->whereHas('status', function($query) use ($sell) {
+                    $query->whereNotIn('name', ['executed', 'cancelled']);
+                })
+                ->first();
 
             if ($existingSell) {
-                abort(403);
+                return false;
+            }
+
+            if (!$sell->user) {
+                $sell->user()->associate(Auth::user());
             }
         });
 

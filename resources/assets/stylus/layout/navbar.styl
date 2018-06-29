@@ -41,10 +41,19 @@
                 width 50px
 
     &-auth
+        align-items center
+
+        .tags
+            margin-bottom 0
+
+            *
+                font-size 1rem
+                margin-bottom 0
+
         +below($bulma-mobile)
             display none
 
-        .navbar-item
+        .navbar-item:not(.portal-navbar-item)
             color darken($light, 10%)!important
             &:hover
                 color $light!important

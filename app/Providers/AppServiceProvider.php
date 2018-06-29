@@ -7,6 +7,7 @@ use View;
 use App\Config;
 use App\Commission;
 use Blade;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,8 +21,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $config = Config::first();
             $commission = Commission::whereFrom(0.0)->first()->commission;
+            $user = Auth::user();
 
-            $view->with(compact('config', 'commission'));
+            $view->with(compact('config', 'commission', 'user'));
         });
 
         $this->registerBladeDirectives();

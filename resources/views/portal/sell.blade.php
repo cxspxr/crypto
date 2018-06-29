@@ -4,9 +4,9 @@
 
 <div class="sell" id="sell" v-cloak>
 
-    <form action="{{ route('auth') }}" method="POST">
+    @include('partials.status')
+    <form action="{{ route('portal.make-order') }}" method="POST">
         @csrf
-
         <div class="field">
           <label class="label">*ID транзакции</label>
           <div class="control has-icons-left has-icons-right">
@@ -28,13 +28,13 @@
 
         <div class="field">
           <tickers placeholdervalue="*Валюта" labelvalue="*Валюта" :currencies='@json($tickers)'></tickers>
-          @if($errors->has('ticker'))
-              <p class="help is-danger">{{ $errors->first('ticker') }}</p>
+          @if($errors->has('ticker_id'))
+              <p class="help is-danger">{{ $errors->first('ticker_id') }}</p>
           @endif
         </div>
 
         <div class="field login-button">
-            <button class="button is-default" type="submit">
+            <button class="button is-primary" type="submit">
                 Подать заявку
             </button>
         </div>

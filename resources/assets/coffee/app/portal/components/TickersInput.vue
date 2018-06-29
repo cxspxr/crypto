@@ -12,7 +12,7 @@
             )
                 template(slot="empty") Ничего не найдено
 
-        input(type="hidden", name="ticker", :value="selectedId")
+        input(type="hidden", name="ticker_id", :value="selectedId")
         b-taglist(attached)
             .wallet(@click="copy", v-if="selectedWallet")
                 b-tag(type="is-dark") Адрес

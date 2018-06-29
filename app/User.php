@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sell::class);
     }
+
+    public function pretty_balance()
+    {
+        return number_format($this->balance, 2, '.', ' ') . " руб.";
+    }
 }
