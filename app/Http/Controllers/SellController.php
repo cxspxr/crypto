@@ -25,6 +25,6 @@ class SellController extends Controller
         if (!$r) {
             return redirect()->back()->with('failure', 'Данная транзакция уже существует в системе');
         }
-        return redirect()->back()->with('success', 'Заявка на продажу успешно создана');
+        return redirect()->route('portal.dashboard');
     }
 }
