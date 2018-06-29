@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Redis;
 use Auth;
+use Carbon\Carbon;
 
 class Sell extends Model
 {
+    protected $appends = ['date'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -53,5 +56,10 @@ class Sell extends Model
                 'ticker_id' => $sell->ticker->id
             ]));
         });
+    }
+
+    public function getDateAttribute()
+    {
+        return $this->created_at->toFormattedDateString();
     }
 }

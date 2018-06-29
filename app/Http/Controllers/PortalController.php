@@ -9,7 +9,7 @@ class PortalController extends Controller
 {
     public function index()
     {
-        $sells = Auth::user()->sells();
+        $sells = Auth::user()->sells()->with('status', 'ticker')->get();
         return view('portal.dashboard')->with(compact('sells'));
     }
 }

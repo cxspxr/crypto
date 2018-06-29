@@ -18,6 +18,8 @@ class User extends Authenticatable
         'email', 'password',
     ];
 
+    protected $appends = ['pretty_balance'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -32,7 +34,7 @@ class User extends Authenticatable
         return $this->hasMany(Sell::class);
     }
 
-    public function pretty_balance()
+    public function getPrettyBalanceAttribute()
     {
         return number_format($this->balance, 2, '.', ' ') . " руб.";
     }

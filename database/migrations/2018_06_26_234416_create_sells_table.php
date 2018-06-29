@@ -22,6 +22,9 @@ class CreateSellsTable extends Migration
 
             $table->string('transaction');
 
+            $table->double('volume')->nullable();
+            $table->double('income')->nullable();
+
             $table->unsignedInteger('ticker_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

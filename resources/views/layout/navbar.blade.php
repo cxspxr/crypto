@@ -53,7 +53,7 @@
             @auth
                 <b-taglist attached>
                     <b-tag type="is-dark">Баланс</b-tag>
-                    <b-tag type="is-info">{{ $user->pretty_balance() }}</b-tag>
+                    <b-tag type="is-info">{{ $user->pretty_balance }}</b-tag>
                 </b-taglist>
                 <a class="navbar-item portal-navbar-item" href="{{ route('logout') }}">Выход</a>
             @else
