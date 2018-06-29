@@ -27,7 +27,7 @@ class Sell extends Model
     {
         parent::boot();
         self::creating(function ($sell) {
-            $sell->status_id = Status::whereName('processing')->first()->id;
+            $sell->status_id = Status::whereName('waiting')->first()->id;
 
             $existingSell = Sell::whereTransaction($sell->transaction)
                 ->where('ticker_id', $sell->ticker_id)
