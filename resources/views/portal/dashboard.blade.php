@@ -5,6 +5,7 @@
     <div class="dashboard" id="dashboard" v-cloak>
         <h1 class="page-title">История продаж</h1>
         <dashboard-table :sells='@json($sells)' :rate="{{ $rate }}"></dashboard-table>
+        {{ $paginatedSells->links('pagination.bulma-pagination') }}
         <p class="dashboard-desc">
             *За каждую продажу Вам начисляются деньги в долларах, поэтому если меняется
             курс рубля по отношению к доллару - меняется и количество вырученных денег
