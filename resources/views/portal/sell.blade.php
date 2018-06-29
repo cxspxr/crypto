@@ -35,7 +35,7 @@
 
         <div class="field login-button">
             <button class="button is-default" type="submit">
-                Подать заявку на продажу
+                Подать заявку
             </button>
         </div>
     </form>
