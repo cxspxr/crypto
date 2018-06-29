@@ -1,5 +1,5 @@
 
-<div class="navbar" id="navbar" v-cloak>
+<div class="navbar">
     <div class="container">
         <div class="navbar-brand">
             <a href="{{ route('home') }}" class="navbar-logo">
@@ -51,10 +51,10 @@
             </div>
             <div class="navbar-end navbar-auth">
             @auth
-                <b-taglist attached>
-                    <b-tag type="is-dark">Баланс</b-tag>
-                    <b-tag type="is-info">{{ $user->pretty_balance }}</b-tag>
-                </b-taglist>
+                <div class="tags has-addons">
+                    <span class="tag is-dark">Баланс</span>
+                    <span class="tag is-info">{{ $user->pretty_balance }}</span>
+                </div>
                 <a class="navbar-item portal-navbar-item" href="{{ route('logout') }}">Выход</a>
             @else
                 <a class="navbar-item" href="{{ route('login') }}">Вход</a>

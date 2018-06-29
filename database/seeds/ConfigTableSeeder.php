@@ -13,7 +13,8 @@ class ConfigTableSeeder extends Seeder
     public function run()
     {
         Config::create([
-            'currency_rate' => 65
+            'currency_rate' => 65,
+            'sell_lifetime' => 72
         ]);
     }
 }

@@ -36,6 +36,6 @@ class User extends Authenticatable
 
     public function getPrettyBalanceAttribute()
     {
-        return number_format($this->balance, 2, '.', ' ') . " руб.";
+        return number_format($this->balance * Config::first()->currency_rate, 2, '.', ' ') . " руб.";
     }
 }

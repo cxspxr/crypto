@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Config extends Model
 {
-    protected $fillable = ['currency_rate'];
+    protected $fillable = ['currency_rate', 'sell_lifetime'];
 }
