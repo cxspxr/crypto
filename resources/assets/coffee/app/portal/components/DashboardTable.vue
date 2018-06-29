@@ -8,7 +8,7 @@
                 | {{ props.row.income ? props.row.income.toFixed(2) + ' руб.' : '?' }}
             b-table-column(field='date', label='Дата') {{ props.row.date }}
             b-table-column(field='status.name', label='Статус')
-                span.tag.is-success(v-if='props.row.status.name == "complete"') Выполнено
+                span.tag.is-primary(v-if='props.row.status.name == "complete"') Выполнено
                 span.tag.is-danger(v-if='props.row.status.name == "cancelled"') Отменено
                 span.tag.is-default(v-if='props.row.status.name == "waiting"') Ожидание
                 span.tag.is-warning(v-if='props.row.status.name == "processing"') Выполнение
