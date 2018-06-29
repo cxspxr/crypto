@@ -8,7 +8,9 @@
                 :particles-number="10"
             ></vue-particles>
         </div>
-    @include('layout.navbar')
+        <div class="hero-head">
+            @include('layout.navbar')
+        </div>
 @endsection
 
 @section('body')

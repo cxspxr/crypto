@@ -1,13 +1,15 @@
 @extends('layout.master')
 
 @section('navbar')
+    <div class="portal">
     @include('layout.navbar')
 @endsection
 
 @section('body')
 
-<div class="container">
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
 </div>
 
 @endsection
