@@ -6,7 +6,7 @@
                 | {{ props.row.volume ? props.row.volume : '?' }}
             b-table-column(field='income', label='Получено')
                 | {{ props.row.income ? (props.row.income * rate).toFixed(2) + ' руб.' : '?' }}
-            b-table-column(field='date', label='Дата') {{ props.row.date }}
+            b-table-column(field='date', label='Дата (Гринвич)') {{ props.row.date }}
             b-table-column(field='status.name', label='Статус')
                 span.tag.is-primary(v-if='props.row.status.name == "complete"') Выполнено
                 span.tag.is-danger(v-if='props.row.status.name == "cancelled"') Отменено

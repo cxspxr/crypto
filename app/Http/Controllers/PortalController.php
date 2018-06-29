@@ -10,7 +10,7 @@ class PortalController extends Controller
 {
     public function index()
     {
-        $sells = Auth::user()->sells()->with('status', 'ticker')->get();
+        $sells = Auth::user()->sells()->with('status', 'ticker')->orderBy('created_at', 'desc')->get();
         $rate = Config::first()->currency_rate;
         return view('portal.dashboard')->with(compact('sells', 'rate'));
     }

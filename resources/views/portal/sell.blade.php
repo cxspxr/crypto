@@ -3,10 +3,18 @@
 @section('content')
 
 <div class="sell" id="sell" v-cloak>
-
+    <h1 class="page-title">Продажа</h1>
     @include('partials.status')
     <form action="{{ route('portal.make-order') }}" method="POST">
         @csrf
+
+        <div class="field">
+          <tickers placeholdervalue="*Валюта" labelvalue="*Валюта" :currencies='@json($tickers)'></tickers>
+          @if($errors->has('ticker_id'))
+              <p class="help is-danger">{{ $errors->first('ticker_id') }}</p>
+          @endif
+        </div>
+
         <div class="field">
           <label class="label">*ID транзакции</label>
           <div class="control has-icons-left has-icons-right">
@@ -23,13 +31,6 @@
           </div>
           @if($errors->has('transaction'))
               <p class="help is-danger">{{ $errors->first('transaction') }}</p>
-          @endif
-        </div>
-
-        <div class="field">
-          <tickers placeholdervalue="*Валюта" labelvalue="*Валюта" :currencies='@json($tickers)'></tickers>
-          @if($errors->has('ticker_id'))
-              <p class="help is-danger">{{ $errors->first('ticker_id') }}</p>
           @endif
         </div>
 
