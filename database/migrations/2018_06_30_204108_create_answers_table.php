@@ -17,10 +17,11 @@ class CreateAnswersTable extends Migration
             $table->increments('id');
 
             $table->boolean('read')->default(false);
+            $table->boolean('is_response')->default(false);
             $table->mediumText('content');
 
             $table->unsignedInteger('ticket_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
 
             $table->foreign('ticket_id')
                 ->references('id')
