@@ -30,6 +30,7 @@
         var websocket = '{{ $websocket }}';
         var config = {!! $config !!};
         var commission = {!! $commission !!};
+        var isHomePage = true;
     </script>
     <script src="{{ asset('js/home.js') }}"></script>
 

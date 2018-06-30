@@ -36,8 +36,8 @@
 
 @section('foot')
 
-    <script src="{{ asset('js/front.js') }}"></script>
-
     @yield('scripts')
+
+    <script src="{{ asset('js/front.js') }}"></script>
 
 @endsection
