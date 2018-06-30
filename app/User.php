@@ -38,4 +38,9 @@ class User extends Authenticatable
     {
         return number_format($this->balance * Config::first()->currency_rate, 2, '.', ' ') . " руб.";
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }

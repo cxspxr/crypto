@@ -26,6 +26,11 @@ class Sell extends Model
         return $this->belongsTo(Ticker::class);
     }
 
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
     public static function boot()
     {
         parent::boot();
