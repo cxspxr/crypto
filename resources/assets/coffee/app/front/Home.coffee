@@ -20,5 +20,3 @@ new Vue
 
 
         ws = WebSocket(onmessage)
-
-document.getElementById('date').innerHTML = (new Date()).getFullYear()

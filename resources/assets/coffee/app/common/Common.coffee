@@ -14,5 +14,3 @@ document.addEventListener 'DOMContentLoaded', () ->
                 $target = document.getElementById target
                 $el.classList.toggle 'is-active'
                 $target.classList.toggle 'is-active'
-new Vue
-    el: '#navbar'
