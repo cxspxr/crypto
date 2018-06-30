@@ -24,6 +24,14 @@
                             <li class="@isRoute('portal.dashboard')">
                                 <a href="{{ route('portal.dashboard') }}">Аккаунт</a>
                             </li>
+                            <li class="@isRoute('portal.tickets')">
+                                <a href="{{ route('portal.tickets') }}">
+                                    Поддержка
+                                    @if($unread_responses)
+                                        ({{ $unread_responses }})
+                                    @endif
+                                </a>
+                            </li>
                         @endauth
                         <li class="@isRoute('portal.sell')">
                             <a href="{{ route('portal.sell') }}">Продажа</a>

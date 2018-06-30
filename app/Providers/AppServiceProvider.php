@@ -27,6 +27,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with(compact('config', 'commission', 'user'));
         });
 
+        View::composer('layout.navbar', function ($view) {
+            $unread_responses = 0;
+            Auth::user()->tickets->each(function ($ticket) {
+                $unread_responses += $ticket->responses()->whereRead(false)->get()->count();
+            });
+
+            $view->with(compact('unread_responses'));
+        });
+
         $this->registerBladeDirectives();
     }
 

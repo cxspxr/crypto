@@ -18,7 +18,7 @@ class Ticket extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function boot()
+    public static function boot()
     {
         parent::boot();
 
