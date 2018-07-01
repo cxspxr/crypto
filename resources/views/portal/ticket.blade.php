@@ -22,7 +22,7 @@
             {!! $ticket->content !!}
         </div>
     </div>
-    @foreach($ticket->answers as $answer)
+    {{-- @foreach($ticket->answers as $answer)
         <div
             class="ticket-answer message is-{{ $answer->is_response ? 'danger' : 'success' }}"
         >
@@ -39,7 +39,7 @@
                 {!! $ticket->content !!}
             </div>
         </div>
-    @endforeach
+    @endforeach --}}
 
 
     <div class="ticket-editor">
@@ -54,5 +54,11 @@
 
 @section('scripts')
     <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+        var imageUploadURL = "{{ route('portal.upload-image') }}";
+        var websiteURL = "{{ url('/') }}";
+        console.log(websiteURL);
+    </script>
     <script src="{{ asset('js/ticket.js') }}"></script>
 @endsection
