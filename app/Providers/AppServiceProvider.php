@@ -28,7 +28,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('layout.navbar', function ($view) {
-            $unread_responses = Auth::user()->tickets->pluck('unread_responses')->sum();
+            $unread_responses = 0;
+            if (Auth::check()) {
+                $unread_responses = Auth::user()->tickets->pluck('unread_responses')->sum();
+            }
 
             $view->with(compact('unread_responses'));
         });
