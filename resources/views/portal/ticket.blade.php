@@ -1,5 +1,11 @@
 @extends('layout/portal')
 
+@section('head')
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+@endsection
+
 @section('content')
 
 <div class="ticket">
@@ -16,7 +22,6 @@
             {!! $ticket->content !!}
         </div>
     </div>
-
     @foreach($ticket->answers as $answer)
         <div
             class="ticket-answer message is-{{ $answer->is_response ? 'danger' : 'success' }}"
@@ -36,6 +41,18 @@
         </div>
     @endforeach
 
+
+    <div class="ticket-editor">
+          <p>Hello World!</p>
+          <p>Some initial <strong>bold</strong> text</p>
+          <p><br></p>
+    </div>
+
 </div>
 
+@endsection
+
+@section('scripts')
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="{{ asset('js/ticket.js') }}"></script>
 @endsection

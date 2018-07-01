@@ -22,7 +22,7 @@
                         class="tickets-row"
                     >
                         <td>{{ $ticket->unread_responses }}</td>
-                        <td>{{ $ticket->updated_at }}</td>
+                        <td>{{ $ticket->answers()->latest()->first()->created_at }}</td>
                         <td>{{ $ticket->sell->ticker->name }}</td>
                         <td>{{ $ticket->sell->date }}</td>
                         <td>
