@@ -23,6 +23,7 @@ class TicketsController extends Controller
 
     public function show(Ticket $ticket)
     {
+        $ticket->readResponses();
         return view('portal.ticket')->with(compact(['ticket']));
     }
 }

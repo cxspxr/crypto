@@ -53,4 +53,14 @@ class Ticket extends Model
     {
         return $this->responses()->whereRead(false)->get()->count();
     }
+
+    public function readResponses()
+    {
+        $this->responses()->whereRead(false)->update(['read' => true]);
+    }
+
+    public function readRequests()
+    {
+        $this->requests()->whereRead(false)->update(['read' => true]);
+    }
 }

@@ -19,6 +19,7 @@
                 @foreach($tickets as $ticket)
                     <tr
                         @click="redirectToTicket('{{ route('portal.ticket', $ticket->id) }}')"
+                        class="tickets-row"
                     >
                         <td>{{ $ticket->unread_responses }}</td>
                         <td>{{ $ticket->updated_at }}</td>
