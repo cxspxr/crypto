@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $fillable = ['is_open', 'content'];
-    protected $append = ['unread_responses'];
+    protected $appends = ['unread_responses'];
 
     public function sell()
     {
