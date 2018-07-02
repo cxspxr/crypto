@@ -15,8 +15,8 @@
     </h1>
 
     <div id="modal">
-        <b-modal :active.sync="isAnswerModalActive">
-            <div class="modal-content" v-html="currentAnswer"></div>
+        <b-modal :active.sync="isModalShown">
+            <div class="modal-content" v-html="current"></div>
         </b-modal>
         <div class="ticket-answer message is-primary" @click='openModal(@json($ticket->content))'>
             <div class="message-header">

@@ -1,4 +1,5 @@
 import Converter from 'quill-delta-to-html'
+import Modal from 'Mixins/Modal'
 
 if document.querySelector '.ticket-editor'
     editor = new Quill '.ticket-editor',
@@ -56,11 +57,4 @@ if document.querySelector '.ticket-editor'
 
 new Vue
     el: '#modal'
-    data:
-        isAnswerModalActive: false
-        currentAnswer: null
-
-    methods:
-        openModal: (content) ->
-            @currentAnswer = content
-            @isAnswerModalActive = true
+    mixins: [Modal]
