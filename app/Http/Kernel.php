@@ -59,5 +59,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'forbid-if-not-ticket-owner' => \App\Http\Middleware\ForbidIfNotTicketOwner::class,
+        'forbid-if-ticket-is-closed' => \App\Http\Middleware\ForbidIfTicketIsClosed::class,
     ];
 }

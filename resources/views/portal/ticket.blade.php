@@ -14,39 +14,60 @@
         {{ $ticket->sell->date }} ({{ $ticket->sell->ticker->name }})
     </h1>
 
-    <div class="ticket-answer message is-primary">
-        <div class="message-header">
-            <p>Вы</p>
-        </div>
-        <div class="message-body">
-            {!! $ticket->content !!}
-        </div>
-    </div>
-    {{-- @foreach($ticket->answers as $answer)
-        <div
-            class="ticket-answer message is-{{ $answer->is_response ? 'danger' : 'success' }}"
-        >
+    <div id="modal">
+        <b-modal :active.sync="isAnswerModalActive">
+            <div class="modal-content" v-html="currentAnswer"></div>
+        </b-modal>
+        <div class="ticket-answer message is-primary" @click='openModal(@json($ticket->content))'>
             <div class="message-header">
-                <p>
-                    @if($answer->is_response)
-                        Поддержка
-                    @else
-                        Вы
-                    @endif
-                </p>
+                <p>Вы</p>
             </div>
             <div class="message-body">
                 {!! $ticket->content !!}
             </div>
         </div>
-    @endforeach --}}
-
-
-    <div class="ticket-editor">
-          <p>Hello World!</p>
-          <p>Some initial <strong>bold</strong> text</p>
-          <p><br></p>
+        @foreach($ticket->answers as $answer)
+            <div
+                class="ticket-answer message is-{{ $answer->is_response ? 'danger' : 'success' }}"
+                 @click='openModal(@json($answer->content))'
+            >
+                <div class="message-header">
+                    <p>
+                        @if($answer->is_response)
+                            Поддержка
+                        @else
+                            Вы
+                        @endif
+                    </p>
+                </div>
+                <div class="message-body">
+                    {!! $answer->content !!}
+                </div>
+            </div>
+        @endforeach
     </div>
+
+
+    @if($ticket->open)
+        <div id="status">
+            @include('partials.status')
+        </div>
+        <div class="ticket-editor">
+
+        </div>
+        <div id="ticket">
+            <form action="{{ route('portal.create-answer', $ticket->id) }}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" name="content" v-model="data">
+                <button
+                    class="ticket-button button is-primary"
+                    type="submit"
+                >
+                    Отправить
+                </button>
+            </form>
+        </div>
+    @endif
 
 </div>
 
@@ -58,7 +79,6 @@
     <script>
         var imageUploadURL = "{{ route('portal.upload-image') }}";
         var websiteURL = "{{ url('/') }}";
-        console.log(websiteURL);
     </script>
     <script src="{{ asset('js/ticket.js') }}"></script>
 @endsection

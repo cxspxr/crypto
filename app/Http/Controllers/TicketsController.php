@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Ticket;
-use App\Http\Requests\UploadImageRequest;
-use Storage;
+use App\Answer;
+use App\Http\Requests\CreateAnswerRequest;
 
 class TicketsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('forbid-if-not-ticket-owner')->only('createAnswer', 'show');
+        $this->middleware('forbid-if-ticket-is-closed')->only('createAnswer');
+    }
+
     public function index()
     {
         $paginatedTickets = Auth::user()
@@ -29,10 +35,13 @@ class TicketsController extends Controller
         return view('portal.ticket')->with(compact(['ticket']));
     }
 
-    public function uploadImage(UploadImageRequest $request)
+    public function createAnswer(Ticket $ticket, CreateAnswerRequest $request)
     {
-        $s = $request->file('image')->store('public');
+        $answer = new Answer;
+        $answer->content = $request->content;
+        $answer->ticket_id = $ticket->id;
+        $answer->save();
 
-        return Storage::url($s);
+        return redirect()->back()->with('success', 'Спасибо за Ваш запрос!');
     }
 }

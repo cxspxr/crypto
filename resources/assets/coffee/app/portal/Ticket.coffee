@@ -1,40 +1,66 @@
-editor = new Quill '.ticket-editor',
-    theme: 'snow',
-    modules:
-        toolbar: [
-            ['bold'],
-            ['image']
-        ]
-    placeholder: "Напишите свой вопрос..."
+import Converter from 'quill-delta-to-html'
 
-customImageHandler = ->
-    input = document.createElement 'input'
-    input.setAttribute 'type', 'file'
-    input.setAttribute 'accept', 'image/*'
-    input.click()
+if document.querySelector '.ticket-editor'
+    editor = new Quill '.ticket-editor',
+        theme: 'snow',
+        modules:
+            toolbar: [
+                ['bold'],
+                ['image']
+            ]
+        placeholder: "Напишите свой вопрос..."
 
-    input.onchange = () =>
-        file = input.files[0]
-        if /^image\//.test file.type
-            saveToServer file
-        else
-            console.warn "Вы можете загружать только картинки"
+    customImageHandler = ->
+        input = document.createElement 'input'
+        input.setAttribute 'type', 'file'
+        input.setAttribute 'accept', 'image/*'
+        input.click()
 
-    saveToServer = (file) =>
-        fd = new FormData()
-        fd.append 'image', file
+        input.onchange = () =>
+            file = input.files[0]
+            if /^image\//.test file.type
+                saveToServer file
+            else
+                console.warn "Вы можете загружать только картинки"
 
-        axios.post imageUploadURL, fd,
-            headers:
-                'Content-Type': 'multipart/form-data'
+        saveToServer = (file) =>
+            fd = new FormData()
+            fd.append 'image', file
 
-        .then (response) =>
-            insertToEditor response.data
-        .catch (err) =>
-            console.log err
+            axios.post imageUploadURL, fd,
+                headers:
+                    'Content-Type': 'multipart/form-data'
 
-    insertToEditor = (url) =>
-        range = editor.getSelection()
-        editor.insertEmbed range.index, 'image', websiteURL + "/" + url
+            .then (response) =>
+                insertToEditor response.data
+            .catch (err) =>
+                console.log err
 
-editor.getModule('toolbar').addHandler 'image', () => customImageHandler()
+        insertToEditor = (url) =>
+            range = editor.getSelection()
+            editor.insertEmbed range.index, 'image', websiteURL + "/" + url
+
+    editor.getModule('toolbar').addHandler 'image', () => customImageHandler()
+
+    new Vue
+        el: '#ticket'
+        data:
+            data: null
+
+        mounted: ->
+            editor.on 'text-change', =>
+                @data = new Converter(editor.getContents().ops).convert()
+
+    new Vue
+        el: '#status'
+
+new Vue
+    el: '#modal'
+    data:
+        isAnswerModalActive: false
+        currentAnswer: null
+
+    methods:
+        openModal: (content) ->
+            @currentAnswer = content
+            @isAnswerModalActive = true
