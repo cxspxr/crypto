@@ -10,7 +10,7 @@
                     <tr>
                         <th>Валюта</th>
                         <th class="mobile--hidden">Отправлено</th>
-                        <th class="mobile--hidden">Получено (руб.)</th>
+                        <th class="mobile--hidden">Получено $</th>
                         <th class="mobile--hidden">Дата (Гринвич)</th>
                         <th>Статус</th>
                         <th>Поддержка</th>
