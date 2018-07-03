@@ -12,4 +12,12 @@
         </b-notification>
 
     @endif
+
+    @if(isset($show_errors))
+        @if($errors->any())
+            <b-notification type="is-danger">
+                {{ $errors->first() }}
+            </b-notification>
+        @endif
+    @endif
 </div>

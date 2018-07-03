@@ -10,8 +10,11 @@
 
 <div class="ticket">
     <h1 class="title">
-        Запрос в поддержку по транзакции от
-        {{ $ticket->sell->date }} ({{ $ticket->sell->ticker->name }})
+        Запрос в поддержку
+        @if($ticket->sell)
+            по транзакции от
+            {{ $ticket->sell->date }} ({{ $ticket->sell->ticker->name }})
+        @endif
     </h1>
 
     <div id="modal">
@@ -48,9 +51,9 @@
     </div>
 
 
-    @if($ticket->open)
+    @if($ticket->is_open)
         <div id="status">
-            @include('partials.status')
+            @include('partials.status', ['show_errors' => true])
         </div>
         <div class="ticket-editor">
 

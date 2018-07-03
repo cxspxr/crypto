@@ -61,5 +61,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'forbid-if-not-ticket-owner' => \App\Http\Middleware\ForbidIfNotTicketOwner::class,
         'forbid-if-ticket-is-closed' => \App\Http\Middleware\ForbidIfTicketIsClosed::class,
+        'forbid-if-not-sell-owner' => \App\Http\Middleware\ForbidIfNotSellOwner::class,
+        'forbid-if-ticket-is-open' => \App\Http\Middleware\ForbidIfTicketIsOpen::class,
+        'forbid-if-sell-ticket-is-open' => \App\Http\Middleware\ForbidIfSellTicketIsOpen::class,
     ];
 }

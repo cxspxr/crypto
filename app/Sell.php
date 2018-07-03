@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 class Sell extends Model
 {
-    protected $appends = ['date'];
+    protected $appends = ['date', 'pretty_income', 'pretty_volume'];
 
     public function user()
     {
@@ -66,5 +66,20 @@ class Sell extends Model
     public function getDateAttribute()
     {
         return $this->created_at->toFormattedDateString();
+    }
+
+    public function getPrettyIncomeAttribute()
+    {
+        return money_format("%i", $this->income);
+    }
+
+    public function getPrettyVolumeAttribute()
+    {
+        return substr("" . $this->volume, 0, 6);
+    }
+
+    public function currentTicket()
+    {
+        return $this->tickets()->where('is_open', true)->first();
     }
 }

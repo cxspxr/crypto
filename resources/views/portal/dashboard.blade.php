@@ -9,19 +9,20 @@
                 <thead>
                     <tr>
                         <th>Валюта</th>
-                        <th>Отправлено</th>
-                        <th>Получено (руб.)</th>
-                        <th>Дата (Гринвич)</th>
+                        <th class="mobile--hidden">Отправлено</th>
+                        <th class="mobile--hidden">Получено (руб.)</th>
+                        <th class="mobile--hidden">Дата (Гринвич)</th>
                         <th>Статус</th>
+                        <th>Поддержка</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($sells as $sell)
                         <tr>
                             <td>{{ $sell->ticker->name }}</td>
-                            <td>{{ $sell->volume }}</td>
-                            <td>{{ $sell->income }}</td>
-                            <td>{{ $sell->date }}</td>
+                            <td class="mobile--hidden">{{ $sell->pretty_volume }}</td>
+                            <td class="mobile--hidden">{{ $sell->pretty_income }}</td>
+                            <td class="mobile--hidden">{{ $sell->date }}</td>
                             <td>
                                 @if($sell->status->name == 'complete')
                                     <span class="tag is-primary">Выполнено</span>
@@ -31,6 +32,19 @@
                                     <span class="tag is-default">Ожидание</span>
                                 @elseif($sell->status->name == 'processing')
                                     <span class="tag is-warning">Выполнение</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if(!$sell->currentTicket())
+                                    <a class="tag is-primary" href="{{ route('portal.create-ticket-for-sell', $sell->id) }}">
+                                        Создать
+                                    </a>
+                                @else
+                                    <a class="tag is-success"
+                                        href={{ route('portal.ticket', $sell->currentTicket()->id) }}
+                                    >
+                                        Просмотр
+                                    </a>
                                 @endif
                             </td>
                         </tr>

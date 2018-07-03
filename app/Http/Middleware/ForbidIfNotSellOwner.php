@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class ForbidIfTicketIsClosed
+class ForbidIfNotSellOwner
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,10 @@ class ForbidIfTicketIsClosed
      */
     public function handle($request, Closure $next)
     {
-        if ($request->ticket->is_open) {
+        if ($request->sell->user_id == Auth::id()) {
             return $next($request);
         }
+
         abort(403);
     }
 }

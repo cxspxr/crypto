@@ -55,6 +55,7 @@ if document.querySelector '.ticket-editor'
     new Vue
         el: '#status'
 
-new Vue
-    el: '#modal'
-    mixins: [Modal]
+if document.querySelector '#modal'
+    new Vue
+        el: '#modal'
+        mixins: [Modal]

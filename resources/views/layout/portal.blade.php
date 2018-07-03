@@ -14,6 +14,13 @@
 
 @endsection
 
+
+@section('footer')
+    <footer>
+        Cryptovault &copy; <span id="date"></span>
+    </footer>
+@endsection
+
 @section('foot')
     <script src="{{ asset('js/portal.js') }}"></script>
 

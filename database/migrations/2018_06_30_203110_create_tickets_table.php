@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
              $table->increments('id');
 
              $table->unsignedInteger('user_id');
-             $table->unsignedInteger('sell_id');
+             $table->unsignedInteger('sell_id')->nullable();
              $table->boolean('is_open')->default(true);
              $table->mediumText('content');
 

@@ -14,3 +14,6 @@ document.addEventListener 'DOMContentLoaded', () ->
                 $target = document.getElementById target
                 $el.classList.toggle 'is-active'
                 $target.classList.toggle 'is-active'
+
+
+    document.getElementById('date').innerHTML = (new Date()).getFullYear()

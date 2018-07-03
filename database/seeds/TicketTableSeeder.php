@@ -14,7 +14,7 @@ class TicketTableSeeder extends Seeder
     public function run()
     {
         factory(Ticket::class, 15)->create()->each(function ($ticket) {
-            factory(Answer::class, 10)->create()->each(function ($answer) use ($ticket) {
+            factory(Answer::class, 2)->create()->each(function ($answer) use ($ticket) {
                 $answer->ticket()->associate($ticket);
             });
         });
