@@ -9,6 +9,11 @@ use App\Http\Requests\SellRequest;
 
 class SellController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('forbid-if-sell-exists')->only('sell');
+    }
+
     public function index()
     {
         $tickers = Ticker::all();

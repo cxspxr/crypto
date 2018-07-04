@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'forbid-if-not-sell-owner' => \App\Http\Middleware\ForbidIfNotSellOwner::class,
         'forbid-if-ticket-is-open' => \App\Http\Middleware\ForbidIfTicketIsOpen::class,
         'forbid-if-sell-ticket-is-open' => \App\Http\Middleware\ForbidIfSellTicketIsOpen::class,
+        'forbid-if-sell-exists' => \App\Http\Middleware\ForbidIfSellExists::class,
     ];
 }

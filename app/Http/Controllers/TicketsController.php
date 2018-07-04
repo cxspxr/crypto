@@ -13,11 +13,11 @@ class TicketsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('forbid-if-not-ticket-owner')->only('createAnswer', 'show');
+        $this->middleware('forbid-if-not-ticket-owner')->only(['createAnswer', 'show']);
         $this->middleware('forbid-if-ticket-is-closed')->only('createAnswer');
-        $this->middleware('forbid-if-not-sell-owner')->only('createForSell');
-        $this->middleware('forbid-if-sell-ticket-is-open')->only('createForSell');
-        $this->middleware('forbid-if-ticket-is-open')->only('create');
+        $this->middleware('forbid-if-not-sell-owner')->only(['createForSell', 'newTicketForSell']);
+        $this->middleware('forbid-if-sell-ticket-is-open')->only(['createForSell', 'newTicketForSell']);
+        $this->middleware('forbid-if-ticket-is-open')->only(['create', 'newTicket']);
     }
 
     public function index()
@@ -87,5 +87,10 @@ class TicketsController extends Controller
     public function newTicketForSell(Sell $sell)
     {
         return view('portal.new-ticket')->with(compact(['sell']));
+    }
+
+    public function newTicket()
+    {
+        return view('portal.new-ticket');
     }
 }

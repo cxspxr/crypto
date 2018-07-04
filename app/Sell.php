@@ -35,18 +35,7 @@ class Sell extends Model
     {
         parent::boot();
         self::creating(function ($sell) {
-            $sell->status_id = Status::whereName('waiting')->first()->id;
-
-            $existingSell = Sell::whereTransaction($sell->transaction)
-                ->where('ticker_id', $sell->ticker_id)
-                ->whereHas('status', function($query) use ($sell) {
-                    $query->whereNotIn('name', ['executed', 'cancelled']);
-                })
-                ->first();
-
-            if ($existingSell) {
-                return false;
-            }
+            $sell->status()->associate(Status::whereName('waiting')->first());
 
             if (!$sell->user) {
                 $sell->user()->associate(Auth::user());

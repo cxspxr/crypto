@@ -18,22 +18,6 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public static function boot()
-    {
-        parent::boot();
-
-        self::creating(function ($ticket) {
-            $existingTicket = self::where('is_open', true)
-                ->where('sell_id', $ticket->sell_id)
-                ->first();
-
-            if ($existingTicket) {
-                return false;
-            }
-        });
-    }
-
     public function answers()
     {
         return $this->hasMany(Answer::class);
