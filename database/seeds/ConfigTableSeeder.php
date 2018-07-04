@@ -14,7 +14,8 @@ class ConfigTableSeeder extends Seeder
     {
         Config::create([
             'currency_rate' => 65,
-            'sell_lifetime' => 72
+            'sell_lifetime' => 72,
+            'withdrawal_limit' => 14500
         ]);
     }
 }

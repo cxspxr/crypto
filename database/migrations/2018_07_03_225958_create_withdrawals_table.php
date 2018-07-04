@@ -16,12 +16,17 @@ class CreateWithdrawalsTable extends Migration
         Schema::create('withdrawals', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->boolean('is_open')->default(true);
+            $table->unsignedInteger('status_id');
             $table->double('amount');
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('status_id')
+                ->references('id')
+                ->on('statuses')
                 ->onDelete('cascade');
 
             $table->timestamps();

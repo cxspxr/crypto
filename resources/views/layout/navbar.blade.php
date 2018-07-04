@@ -20,9 +20,12 @@
                         <li class="@isRoute('home')">
                             <a href="{{ route('home') }}">Главная</a>
                         </li>
+                        <li class="@isRoute('portal.sell')">
+                            <a href="{{ route('portal.sell') }}">Продажа</a>
+                        </li>
                         @auth('web')
                             <li class="@isRoute('portal.dashboard')">
-                                <a href="{{ route('portal.dashboard') }}">Аккаунт</a>
+                                <a href="{{ route('portal.dashboard') }}">История</a>
                             </li>
                             <li class="@isRoute('portal.tickets')">
                                 <a href="{{ route('portal.tickets') }}">
@@ -32,10 +35,12 @@
                                     @endif
                                 </a>
                             </li>
+                            <li class="@isRoute('portal.withdrawals')">
+                                <a href="{{ route('portal.withdrawals') }}">
+                                    Вывод
+                                </a>
+                            </li>
                         @endauth
-                        <li class="@isRoute('portal.sell')">
-                            <a href="{{ route('portal.sell') }}">Продажа</a>
-                        </li>
                         <li class="@isRoute('rules')">
                             <a href="{{ route('rules') }}">Правила</a>
                         </li>

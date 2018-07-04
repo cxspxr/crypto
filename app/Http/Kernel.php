@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Http\Middleware\ForbidIfWithdrawalExists;
+use App\Http\Middleware\ForbidIfWithdrawalExceedsUserBalance;
 
 class Kernel extends HttpKernel
 {
@@ -65,5 +67,8 @@ class Kernel extends HttpKernel
         'forbid-if-ticket-is-open' => \App\Http\Middleware\ForbidIfTicketIsOpen::class,
         'forbid-if-sell-ticket-is-open' => \App\Http\Middleware\ForbidIfSellTicketIsOpen::class,
         'forbid-if-sell-exists' => \App\Http\Middleware\ForbidIfSellExists::class,
+        'forbid-if-withdrawal-exists' => \App\Http\Middleware\ForbidIfWithdrawalExists::class,
+        'forbid-if-withdrawal-exceeds-limit' => \App\Http\Middleware\ForbidIfWithdrawalExceedsLimit::class,
+        'forbid-if-withdrawal-exceeds-user-balance' => \App\Http\Middleware\ForbidIfWithdrawalExceedsUserBalance::class,
     ];
 }

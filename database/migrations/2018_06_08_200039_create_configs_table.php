@@ -17,6 +17,7 @@ class CreateConfigsTable extends Migration
             $table->increments('id');
             $table->double('currency_rate');
             $table->integer('sell_lifetime');
+            $table->double('withdrawal_limit');
             $table->timestamps();
         });
     }

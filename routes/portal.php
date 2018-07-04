@@ -11,3 +11,6 @@ Route::post('create-ticket-for-sell/{sell}', 'TicketsController@createForSell')-
 Route::post('create-ticket', 'TicketsController@create')->name('create-ticket');
 Route::get('create-ticket', 'TicketsController@newTicket')->name('new-ticket');
 Route::get('create-ticket-for-sell/{sell}', 'TicketsController@newTicketForSell')->name('new-ticket-for-sell');
+Route::get('withdrawals', 'WithdrawalController@index')->name('withdrawals');
+Route::post('create-withdrawal', 'WithdrawalController@createWithdrawal')->name('create-withdrawal');
+Route::get('new-withdrawal', 'WithdrawalController@newWithdrawal')->name('new-withdrawal');

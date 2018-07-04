@@ -103,7 +103,9 @@ gulp.task('coffee', function(){
                 sell: 'app/portal/Sell',
                 dashboard: 'app/portal/Dashboard',
                 tickets: 'app/portal/Tickets',
-                ticket: 'app/portal/Ticket'
+                ticket: 'app/portal/Ticket',
+                withdraw: 'app/portal/Withdraw',
+                withdrawals: 'app/portal/Withdrawals'
             },
             output: {
                 filename: '[name].js',
