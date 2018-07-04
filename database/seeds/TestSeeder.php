@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class TestSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -13,7 +13,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ConfigTableSeeder::class);
         $this->call(CommissionTableSeeder::class);
+        $this->call(UserTableSeeder::class);
         $this->call(TickerTableSeeder::class);
         $this->call(StatusTableSeeder::class);
+        $this->call(SellTableSeeder::class);
+        $this->call(TicketTableSeeder::class);
     }
 }
