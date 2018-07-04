@@ -16,7 +16,7 @@ class ForbidIfWithdrawalExceedsUserBalance
      */
     public function handle($request, Closure $next)
     {
-        if ($request->amount < Auth::user()->balance) {
+        if (Auth::user()->balance >= $request->amount) {
             return $next($request);
         }
 
