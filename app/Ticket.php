@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $fillable = ['is_open', 'content'];
-    protected $appends = ['unread_responses'];
+    protected $appends = ['unread_responses', 'unread_requests'];
 
     public function sell()
     {
@@ -36,6 +36,11 @@ class Ticket extends Model
     public function getUnreadResponsesAttribute()
     {
         return $this->responses()->whereRead(false)->get()->count();
+    }
+
+    public function getUnreadRequestsAttribute()
+    {
+        return $this->requests()->whereRead(false)->get()->count();
     }
 
     public function readResponses()

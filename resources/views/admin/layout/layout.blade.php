@@ -11,10 +11,23 @@
 </head>
 <body>
 
-    @include('admin.layout.navbar')
+    <div class="admin-page-container">
+        <div class="columns admin-page">
+            <div class="column is-one-fifth">
+                @include('admin.layout.navbar')
+            </div>
+            <div class="column">
+                <h1 class="admin-page-title">@yield('title')</h1>
+                <div class="admin-page-content">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
 
-    @yield('content')
-
+        <footer>
+            Cryptovault &copy; <span id="date"></span>
+        </footer>
+    </div>
     @include('admin.layout.footer')
 
     <script src="https://unpkg.com/vue"></script>

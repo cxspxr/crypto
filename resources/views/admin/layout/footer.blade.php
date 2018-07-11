@@ -5,3 +5,6 @@
 @endif
 
 <script src="https://unpkg.com/buefy"></script>
+
+<script src="{{ asset('js/common.js') }}"></script>
+<script src="{{ asset('js/commons.js') }}"></script>

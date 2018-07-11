@@ -9,6 +9,7 @@ use App\Commission;
 use Blade;
 use Carbon\Carbon;
 use Auth;
+use App\Ticket;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,13 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $view->with(compact('unread_responses'));
+        });
+
+        View::composer('admin.layout.navbar', function ($view) {
+            $unread_requests = Ticket::all()->pluck('unread_requests')->sum();
+            $open_tickets = Ticket::where('is_open', true)->count();
+
+            $view->with(compact('unread_requests', 'open_tickets'));
         });
 
         $this->registerBladeDirectives();
