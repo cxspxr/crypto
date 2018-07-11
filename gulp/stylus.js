@@ -32,4 +32,13 @@ gulp.task('stylus', function(){
 		.pipe(gulpif(argv.dev, sourcemaps.write()))
 		.pipe(gulp.dest('public/css'))
 		.pipe(gulpif(argv.dev, server.stream()));
+        
+    gulp.src('resources/assets/stylus/admin/main.styl')
+		.pipe(gulpif(argv.dev, sourcemaps.init()))
+		.pipe(stylus(conf).on('error', onError))
+		.pipe(autoprefixer())
+		.pipe(rename('admin.css'))
+		.pipe(gulpif(argv.dev, sourcemaps.write()))
+		.pipe(gulp.dest('public/css'))
+		.pipe(gulpif(argv.dev, server.stream()));
 })
