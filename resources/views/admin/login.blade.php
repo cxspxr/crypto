@@ -7,7 +7,7 @@
     <form action="{{ route('admin.auth') }}" method="POST">
         @csrf
 
-        <div class="field">
+        {{-- <div class="field">
           <label class="label">*Логин</label>
           <div class="control has-icons-left has-icons-right">
             <input class="input" type="text"
@@ -16,18 +16,18 @@
               <i class="fa fa-user"></i>
             </span>
           </div>
-        </div>
-
-        <div class="field">
-          <label class="label">*Пароль</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="password"
-                placeholder="*Пароль" name="password">
-            <span class="icon is-small is-left">
-              <i class="fa fa-key"></i>
-            </span>
-          </div>
-        </div>
+        </div> --}}
+        @include('partials.form-field', [
+            'name' => 'login',
+            'placeholder' => 'Логин',
+            'fa' => 'user'
+        ])
+        @include('partials.form-field', [
+            'name' => 'password',
+            'placeholder' => 'Пароль',
+            'type' => 'password',
+            'fa' => 'key'
+        ])
 
         <div class="field login-button">
             <button class="button is-primary" type="submit">

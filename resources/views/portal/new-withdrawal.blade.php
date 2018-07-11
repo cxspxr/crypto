@@ -7,25 +7,11 @@
     @include('partials.status')
     <form action="{{ route('portal.create-withdrawal') }}" method="POST">
         @csrf
-
-        <div class="field">
-          <label class="label">*Сумма</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input {{ $errors->has('amount') ? 'is-danger' : '' }}" type="text"
-                placeholder="*(1.23, 300, ...)" value="{{ old('amount') }}" name="amount">
-            <span class="icon is-small is-left">
-              <i class="fa fa-dollar"></i>
-            </span>
-            @if($errors->has('amount'))
-                <span class="icon is-small is-right">
-                  <i class="fa fa-exclamation-triangle"></i>
-                </span>
-            @endif
-          </div>
-          @if($errors->has('amount'))
-              <p class="help is-danger">{{ $errors->first('amount') }}</p>
-          @endif
-        </div>
+        @include('partials.form-field', [
+            'name' => 'amount',
+            'placeholder' => 'Сумма',
+            'fa' => 'dollar'
+        ])
 
         <div class="field login-button">
             <button class="button is-primary" type="submit">

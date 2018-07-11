@@ -25,15 +25,13 @@
               <p class="help is-danger">Что-то не так, попробуйте еще раз</p>
           @endif
         </div>
-        <div class="field">
-          <label class="label">Пароль</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="password" placeholder="Пароль" name="password">
-            <span class="icon is-small is-left">
-              <i class="fa fa-key"></i>
-            </span>
-          </div>
-        </div>
+        @include('partials.form-field', [
+            'name' => 'password',
+            'placeholder' => 'Пароль',
+            'fa' => 'key',
+            'optional' => true,
+            'type' => 'password'
+        ])
 
         <div class="field login-button">
             <button class="button is-default" type="submit">
