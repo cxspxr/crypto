@@ -27,7 +27,7 @@ class CreateWithdrawalRequest extends FormRequest
             'amount' => [
                 'required',
                 function ($attribute, $value, $fail) {
-                    if ((double)($value) === 0.0) {
+                    if (!is_numeric($value)) {
                         return $fail('Необходимо ввести сумму в формате "1.23"');
                     }
                 }

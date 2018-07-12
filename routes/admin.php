@@ -7,7 +7,7 @@ Route::group([
     'middleware' => ['bindings', 'auth:admin']
 ], function () {
     Route::get('/', 'Admin\AdminController@dashboard')->name('dashboard');
-    Route::get('user/{user}', 'Admin\AdminUserController@show')->name('user');
+    Route::get('user/{current_user}', 'Admin\AdminUserController@show')->name('user');
     Route::post('update-user/{user}', 'Admin\AdminUserController@update')->name('update-user');
 });
 

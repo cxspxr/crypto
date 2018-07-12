@@ -1,9 +1,9 @@
-Vue.use Buefy.default,
-    defaultIconPack: 'fa',
-    defaultContainerElement: '#content'
 
 
 document.addEventListener 'DOMContentLoaded', () ->
+    Vue.use Buefy.default,
+        defaultIconPack: 'fa',
+        defaultContainerElement: '#content'
 
     $navbarBurgers = Array.prototype.slice.call document.querySelectorAll('.navbar-burger'), 0
 
@@ -17,3 +17,6 @@ document.addEventListener 'DOMContentLoaded', () ->
 
 
     document.getElementById('date').innerHTML = (new Date()).getFullYear()
+    if document.getElementById('status')
+        new Vue
+            el: '#status'

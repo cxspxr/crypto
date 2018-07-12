@@ -10,9 +10,9 @@ use Hash;
 
 class AdminUserController extends Controller
 {
-    public function show(User $user)
+    public function show(User $current_user)
     {
-        return view('admin.users.show-user')->with(compact('user'));
+        return view('admin.users.show-user')->with(compact('current_user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -23,7 +23,8 @@ class AdminUserController extends Controller
         $user->email = $request->email;
         $user->commission = $request->commission;
         $user->balance = $request->balance;
+        $user->save();
 
-        return redirect()->route('admin.users.show-user', $user);
+        return redirect()->back()->withSuccess('Информация успешно сохранена');
     }
 }

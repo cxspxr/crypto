@@ -27,7 +27,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->pretty_balance }}</td>
                             <td class="mobile--hidden">{{ count($user->sells) }}</td>
-                            <td class="mobile--hidden">{{ $user->commission ?: '-' }}</td>
+                            <td class="mobile--hidden">{{ $user->commission ? $user->commission . '%' : '-' }}</td>
                         </tr>
                     @endforeach
                 </tbody>

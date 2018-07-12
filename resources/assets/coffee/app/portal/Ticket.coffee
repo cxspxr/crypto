@@ -52,9 +52,6 @@ if document.querySelector '.ticket-editor'
             editor.on 'text-change', =>
                 @data = new Converter(editor.getContents().ops).convert()
 
-    new Vue
-        el: '#status'
-
 if document.querySelector '#modal'
     new Vue
         el: '#modal'
