@@ -1,4 +1,5 @@
+import RedirectsTo from 'Mixins/RedirectsTo'
+
 new Vue
     el: '#dashboard'
-    methods:
-        redirectToUser: (route) -> document.location.assign route
+    mixins: [RedirectsTo]
