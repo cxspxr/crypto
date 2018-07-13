@@ -32,9 +32,11 @@
             'value' => $config->withdrawal_limit
         ])
 
-        <button type="submit" class="submit-button button is-primary">
-            Сохранить изменения
-        </button>
+        <div class="form-buttons">
+            <button type="submit" class="submit-button button is-primary">
+                Сохранить изменения
+            </button>
+        </div>
     </form>
 
 </div>

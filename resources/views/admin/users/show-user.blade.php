@@ -37,7 +37,12 @@
             'fa' => 'key'
         ])
 
-        <button type="submit" class="submit-button button is-primary">Сохранить изменения</button>
+        <div class="form-buttons">
+            <button type="submit" class="submit-button button is-primary">Сохранить изменения</button>
+            <a href="{{ route('admin.delete-user', $current_user->id) }}" class="button is-danger">
+                Удалить пользователя
+            </a>
+        </div>
     </form>
 </div>
 

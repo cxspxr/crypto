@@ -11,8 +11,20 @@ form
     .field
         margin-bottom 25px!important
 
-    .submit-button
-        margin-top 15px
+    .form-buttons
+        display flex
+        align-items center
+        margin-top 25px
+
+        .submit-button
+            margin-right 20px
+
+        +below($mobile-width)
+            flex-direction column
+
+            .submit-button
+                margin-right 0
+                margin-bottom 15px
 
 .status
     margin 15px 0

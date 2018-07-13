@@ -25,12 +25,23 @@ class UpdateOrCreateTickerRequest extends FormRequest
      */
     public function rules()
     {
-        $id = Ticker::where('ticker', $this->ticker)->first();
+        $id = Ticker::where('ticker', 't' . $this->ticker . 'USD')->first();
+        $id = $id ? $id->id : null;
+
+        $updatingId = $this->current_ticker ? $this->current_ticker->id : null;
 
         return [
-            'ticker' => 'required|unique:tickers,id,'.$id,
+            'ticker' => [
+                'required',
+                function ($attribute, $value, $fail) use ($id, $updatingId) {
+                    if (Ticker::find($id) && $id !== $updatingId) {
+                        return $fail('Такая валюта уже существует!');
+                    }
+                }
+            ],
             'name' => 'required',
             'wallet' => 'required'
         ];
+
     }
 }

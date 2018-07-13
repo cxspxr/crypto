@@ -27,4 +27,11 @@ class AdminUserController extends Controller
 
         return redirect()->back()->withSuccess('Информация успешно сохранена');
     }
+
+    public function remove(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('admin.dashboard')->withFailure('Пользователь успешно удален');
+    }
 }

@@ -26,12 +26,12 @@ class AdminTickerController extends Controller
         return view('admin.tickers.ticker')->with(compact('ticker'));
     }
 
-    public function update(UpdateOrCreateTickerRequest $request, Ticker $ticker)
+    public function update(UpdateOrCreateTickerRequest $request, Ticker $current_ticker)
     {
-        $ticker->name = $request->name;
-        $ticker->ticker = 't' . strtoupper($request->ticker) . 'USD';
-        $ticker->wallet = $request->wallet;
-        $ticker->save();
+        $current_ticker->name = $request->name;
+        $current_ticker->ticker = 't' . strtoupper($request->ticker) . 'USD';
+        $current_ticker->wallet = $request->wallet;
+        $current_ticker->save();
 
         return redirect()->back()->withSuccess('Информация успешно сохранена');
     }
@@ -50,5 +50,12 @@ class AdminTickerController extends Controller
         $ticker->save();
 
         return redirect()->route('admin.tickers')->withSuccess('Валюта успешно добавлена');
+    }
+
+    public function remove(Ticker $ticker)
+    {
+        $ticker->delete();
+
+        return redirect()->route('admin.tickers')->withFailure('Валюта успешно удалена');
     }
 }

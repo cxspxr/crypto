@@ -13,13 +13,7 @@
         <li><a href="{{ route('admin.tickers') }}" class="@isRoute('admin.tickers')">Валюты</a></li>
         <li>
             <a href="{{ route('admin.config') }}" class="@isRoute('admin.config')">Настройки</a>
-            <ul>
-                <li><a href="" class="@isRoute('admin.dashboard')">Комиссия</a></li>
-                <li><a href="" class="@isRoute('admin.dashboard')">Пороговая комиссия</a></li>
-                <li><a href="" class="@isRoute('admin.dashboard')">Программа лояльности</a></li>
-                <li><a href="" class="@isRoute('admin.dashboard')">Лимит на вывод</a></li>
-                <li><a href="" class="@isRoute('admin.dashboard')">Лимит на ожидание выполнения заявки на продажу</a></li>
-            </ul>
+            <a href="{{ route('admin.commissions') }}" class="@isRoute('admin.commissions')">Комиссии</a>
         </li>
         <li>
             <a href="">

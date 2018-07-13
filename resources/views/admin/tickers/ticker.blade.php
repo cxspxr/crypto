@@ -34,7 +34,7 @@
             'name' => 'ticker',
             'placeholder' => 'Сокращение (BTC, XMR, BCH...)',
             'fa' => 'pencil',
-            'value' => isset($ticker) ? $ticker->ticker : null
+            'value' => isset($ticker) ? $ticker->pretty_ticker : null
         ])
 
         @include('partials.form-field', [
@@ -44,13 +44,21 @@
             'value' => isset($ticker) ? $ticker->wallet : null
         ])
 
-        <button type="submit" class="submit-button button is-primary">
+        <div class="form-buttons">
+            <button type="submit" class="submit-button button is-primary">
+                @if(isset($ticker))
+                    Сохранить изменения
+                @else
+                    Добавить валюту
+                @endif
+            </button>
+
             @if(isset($ticker))
-                Сохранить изменения
-            @else
-                Добавить валюту
+                <a href="{{ route('admin.delete-ticker', $ticker->id) }}" class="button is-danger">
+                    Удалить валюту
+                </a>
             @endif
-        </button>
+        </div>
     </form>
 
 </div>
