@@ -119,7 +119,8 @@ gulp.task('coffee', function(){
             Object.assign(webpackCommonConfig, {
                 entry: {
                     dashboard: 'admin/Dashboard',
-                    common: 'admin/Admin'
+                    common: 'admin/Admin',
+                    tickers: 'admin/Tickers'
                 },
                 output: {
                     filename: 'admin-[name].js',

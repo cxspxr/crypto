@@ -4,13 +4,13 @@
     </p>
     <ul class="menu-list">
         <li><a href="{{ route('admin.dashboard') }}" class="@isRoute('admin.dashboard')">Пользователи</a></li>
-        <li><a href="{{ route('admin.sells')}} " class="@isRoute('admin.sells')">Продажи</a></li>
+        <li><a href="{{ route('admin.sells')}}" class="@isRoute('admin.sells')">Продажи</a></li>
     </ul>
     <p class="menu-label">
         Администрирование
     </p>
     <ul class="menu-list">
-        <li><a href="" class="@isRoute('admin.dashboard')">Валюты</a></li>
+        <li><a href="{{ route('admin.tickers') }}" class="@isRoute('admin.tickers')">Валюты</a></li>
         <li>
             <a href="" class="@isRoute('admin.dashboard')">Настройки</a>
             <ul>

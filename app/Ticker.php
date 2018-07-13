@@ -14,4 +14,9 @@ class Ticker extends Model
     {
         return substr(substr($this->ticker, 1), 0, -3);
     }
+
+    public function sells()
+    {
+        return $this->hasMany(Sell::class);
+    }
 }
