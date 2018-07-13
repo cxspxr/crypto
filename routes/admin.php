@@ -17,6 +17,9 @@ Route::group([
     Route::post('update-ticker/{ticker}', 'Admin\AdminTickerController@update')->name('update-ticker');
     Route::get('add-ticker', 'Admin\AdminTickerController@add')->name('add-ticker');
     Route::post('create-ticker', 'Admin\AdminTickerController@create')->name('create-ticker');
+
+    Route::get('config', 'Admin\AdminConfigController@index')->name('config');
+    Route::post('update-config', 'Admin\AdminConfigController@update')->name('update-config');
 });
 
 Route::get('logout', 'Admin\AdminLoginController@logout')->name('logout');

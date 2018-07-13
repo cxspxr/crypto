@@ -12,7 +12,7 @@
     <ul class="menu-list">
         <li><a href="{{ route('admin.tickers') }}" class="@isRoute('admin.tickers')">Валюты</a></li>
         <li>
-            <a href="" class="@isRoute('admin.dashboard')">Настройки</a>
+            <a href="{{ route('admin.config') }}" class="@isRoute('admin.config')">Настройки</a>
             <ul>
                 <li><a href="" class="@isRoute('admin.dashboard')">Комиссия</a></li>
                 <li><a href="" class="@isRoute('admin.dashboard')">Пороговая комиссия</a></li>
