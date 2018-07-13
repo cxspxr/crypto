@@ -21,23 +21,27 @@
             'value' => $withdrawal->amount
         ])
 
-        <div class="control">
-            <label for="cancelled" class="radio">
-                <input type="radio" id="cancelled" name="status_id"
-                    value="{{ $cancelled_status}}" {{ $withdrawal->status_id == $cancelled_status ? 'checked' : '' }}>
-                Отменено
-            </label>
-            <label for="processing" class="radio">
-                <input type="radio" id="processing" name="status_id"
-                    value="{{ $processing_status }}"  {{ $withdrawal->status_id == $processing_status ? 'checked' : '' }}>
-                Выполнение
-            </label>
-            <label for="complete" class="radio">
-                <input type="radio" id="complete" name="status_id"
-                    value="{{ $complete_status }}"  {{ $withdrawal->status_id == $complete_status ? 'checked' : '' }}>
-                Выполнено
-            </label>
-        </div>
+        @if($withdrawal->status_id == $complete_status)
+            <input type="hidden" name="status_id" value="{{ $complete_status }}">
+        @else
+            <div class="control">
+                <label for="cancelled" class="radio">
+                    <input type="radio" id="cancelled" name="status_id"
+                        value="{{ $cancelled_status}}" {{ $withdrawal->status_id == $cancelled_status ? 'checked' : '' }}>
+                    Отменено
+                </label>
+                <label for="processing" class="radio">
+                    <input type="radio" id="processing" name="status_id"
+                        value="{{ $processing_status }}"  {{ $withdrawal->status_id == $processing_status ? 'checked' : '' }}>
+                    Выполнение
+                </label>
+                <label for="complete" class="radio">
+                    <input type="radio" id="complete" name="status_id"
+                        value="{{ $complete_status }}">
+                    Выполнено
+                </label>
+            </div>
+        @endif
 
         <div class="form-buttons">
             <button type="submit" class="submit-button button is-primary">

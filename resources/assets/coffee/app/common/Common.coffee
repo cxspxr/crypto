@@ -1,9 +1,9 @@
 
+Vue.use Buefy.default,
+    defaultIconPack: 'fa',
+    defaultContainerElement: '#content'
 
 document.addEventListener 'DOMContentLoaded', () ->
-    Vue.use Buefy.default,
-        defaultIconPack: 'fa',
-        defaultContainerElement: '#content'
 
     $navbarBurgers = Array.prototype.slice.call document.querySelectorAll('.navbar-burger'), 0
 

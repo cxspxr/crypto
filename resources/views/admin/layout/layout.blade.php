@@ -31,14 +31,9 @@
     </div>
     @include('admin.layout.footer')
 
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/jquery"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    @yield('foot')
 
     <script type="text/javascript" src="{{ asset('js/admin-common.js') }}"></script>
+    @yield('foot')
 
     @yield('scripts')
 

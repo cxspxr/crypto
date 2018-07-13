@@ -19,7 +19,7 @@
                 <tbody>
                     @foreach($withdrawals as $withdrawal)
                         <tr>
-                            <td>{{ $withdrawal->amount }}</td>
+                            <td>{{ $withdrawal->amount }} руб.</td>
                             <td>{{ $withdrawal->created_at }}</td>
                             <td>
                                 @if($withdrawal->status->name == 'complete')
