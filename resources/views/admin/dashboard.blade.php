@@ -21,7 +21,7 @@
                 <tbody>
                     @foreach($users as $user)
                         <tr
-                            @click="redirectToUser('{{ route('admin.user', $user->id) }}')"
+                            @click="redirectTo('{{ route('admin.user', $user->id) }}')"
                             class="tr"
                         >
                             <td>{{ $user->email }}</td>
