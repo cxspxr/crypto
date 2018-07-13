@@ -7,7 +7,7 @@ use Auth;
 
 class Withdrawal extends Model
 {
-    protected $fillable = ['amount'];
+    protected $fillable = ['amount', 'card'];
 
     public function user()
     {
@@ -35,7 +35,7 @@ class Withdrawal extends Model
             if ($w->status->name == 'complete') {
                 $user = Auth::user();
                 $user->balance = $user->balance - $w->amount;
-                $user->save(); 
+                $user->save();
             }
         });
     }

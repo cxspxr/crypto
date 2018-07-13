@@ -31,7 +31,8 @@ class CreateWithdrawalRequest extends FormRequest
                         return $fail('Необходимо ввести сумму в формате "1.23"');
                     }
                 }
-            ]
+            ],
+            'card' => ['required']
         ];
     }
 }

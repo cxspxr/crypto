@@ -18,6 +18,7 @@ class CreateWithdrawalsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('status_id');
             $table->double('amount');
+            $table->string('card');
 
             $table->foreign('user_id')
                 ->references('id')

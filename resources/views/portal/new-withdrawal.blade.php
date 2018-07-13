@@ -13,6 +13,12 @@
             'fa' => 'dollar'
         ])
 
+        @include('partials.form-field', [
+            'name' => 'card',
+            'placeholder' => 'Номер банковской карты',
+            'fa' => 'credit-card'
+        ])
+
         <div class="field login-button">
             <button class="button is-primary" type="submit">
                 Подать заявку
