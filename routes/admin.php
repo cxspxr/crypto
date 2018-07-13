@@ -29,6 +29,12 @@ Route::group([
     Route::post('create-commission', 'Admin\AdminCommissionController@create')->name('create-commission');
     Route::post('update-commission/{current_commission}', 'Admin\AdminCommissionController@update')->name('update-commission');
     Route::get('delete-commission/{commission}', 'Admin\AdminCommissionController@remove')->name('delete-commission');
+
+    Route::get('tickets', 'Admin\AdminTicketController@index')->name('tickets');
+    Route::get('ticket/{ticket}', 'Admin\AdminTicketController@show')->name('ticket');
+    Route::post('create-answer/{ticket}', 'Admin\AdminTicketController@createAnswer')->name('create-answer');
+
+    Route::post('upload-image', 'ImageController@upload')->name('upload-image');
 });
 
 Route::get('logout', 'Admin\AdminLoginController@logout')->name('logout');

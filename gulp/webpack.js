@@ -121,7 +121,8 @@ gulp.task('coffee', function(){
                     dashboard: 'admin/Dashboard',
                     common: 'admin/Admin',
                     tickers: 'admin/Tickers',
-                    commissions: 'admin/Commissions'
+                    commissions: 'admin/Commissions',
+                    tickets: 'admin/Tickets'
                 },
                 output: {
                     filename: 'admin-[name].js',

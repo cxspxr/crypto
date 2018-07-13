@@ -30,7 +30,7 @@ class AdminLoginController extends Controller
             'password' => $request->password
         ], true)
         ) {
-            return redirect()->intended(route('admin.dashboard'));
+            return redirect()->route('admin.dashboard');
         }
 
         return redirect()->back()->withInput($request->only('login'));

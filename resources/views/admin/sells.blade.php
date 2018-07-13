@@ -9,9 +9,10 @@
             <table class="table has-mobile-cards">
                 <thead>
                     <tr>
-                        <th>Сумма</th>
-                        <th>Статус</th>
+                        <th>Объем (крипт.)</th>
+                        <th>Прибыль пользователя (руб.)</th>
                         <th class="mobile--hidden">Пользователь</th>
+                        <th>Статус</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,6 +20,8 @@
                         <tr
                         >
                             <td>{{ $sell->volume ?: '?' }} {{ $sell->ticker->pretty_ticker }}</td>
+                            <td>{{ $sell->income ? $sell->income . ' руб.' : '?' }}</td>
+                            <td class="mobile--hidden">{{ $sell->user->email }}</td>
                             <td>
                                 @if($sell->status->name == 'complete')
                                     <span class="tag is-primary">Выполнено</span>
@@ -30,7 +33,6 @@
                                     <span class="tag is-warning">Выполнение</span>
                                 @endif
                             </td>
-                            <td class="mobile--hidden">{{ $sell->user->email }}</td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -16,15 +16,21 @@
             <a href="{{ route('admin.commissions') }}" class="@isRoute('admin.commissions')">Комиссии</a>
         </li>
         <li>
-            <a href="">
+            <a href="{{ route('admin.tickets') }}" class="@isRoute('admin.tickets')">
 
             Поддержка
             @if($open_tickets)
-                ({{ $open_tickets }} тикетов)
+                ({{ $open_tickets }} открытых тикетов)
             @endif
             @if($unread_requests)
-                ({{ $unread_requests }} ответов)
+                ({{ $unread_requests }} новых ответов)
             @endif
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.logout') }}">
+                <b>Выйти</b>
             </a>
         </li>
     </ul>

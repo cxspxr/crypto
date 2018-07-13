@@ -51,7 +51,6 @@ class TicketsController extends Controller
         $answer = new Answer;
         $answer->content = $request->content;
         $answer->ticket_id = $ticket->id;
-        $ticket->user()->associate(Auth::user());
         $answer->save();
 
         return redirect()->back()->with('success', 'Спасибо за Ваш запрос!');

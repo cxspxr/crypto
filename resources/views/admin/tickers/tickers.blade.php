@@ -42,7 +42,7 @@
             </a>
             {{ $paginatedTickers->links('pagination.bulma-pagination') }}
         @else
-            У Вас нет продаж.
+            У Вас нет валют.
 
             <a href="{{ route('admin.add-ticker') }}" class="button is-primary">
                 Добавить валюту

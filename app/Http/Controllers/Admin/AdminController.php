@@ -23,6 +23,7 @@ class AdminController extends Controller
     public function sells()
     {
         $paginatedSells = Sell::with('user', 'status', 'ticker')
+            ->orderBy('income', 'desc')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         $sells = $paginatedSells->items();

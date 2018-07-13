@@ -14,7 +14,7 @@ class UploadImageRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return Auth::check() || Auth::guard('admin')->check();
     }
 
     /**

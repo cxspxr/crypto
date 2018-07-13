@@ -9,7 +9,7 @@ if document.querySelector '.ticket-editor'
                 ['bold'],
                 ['image']
             ]
-        placeholder: "Напишите свой вопрос..."
+        placeholder: "Напишите что-нибудь..."
 
     customImageHandler = ->
         input = document.createElement 'input'
