@@ -1,6 +1,6 @@
 @extends('admin.layout.layout')
 
-@section('title', 'Валюты')
+@section('title', 'Тикеты')
 
 @section('content')
     <div id="tickets">

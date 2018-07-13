@@ -31,11 +31,10 @@ class Withdrawal extends Model
             }
         });
 
-        self::updating(function ($w) {
+        self::updated(function ($w) {
             if ($w->status->name == 'complete') {
-                $user = Auth::user();
-                $user->balance = $user->balance - $w->amount;
-                $user->save();
+                $w->user->balance = $w->user->balance - $w->amount;
+                $w->user->save();
             }
         });
     }

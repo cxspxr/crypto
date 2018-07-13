@@ -25,11 +25,6 @@ class CreateWithdrawalsTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('status_id')
-                ->references('id')
-                ->on('statuses')
-                ->onDelete('cascade');
-
             $table->timestamps();
         });
     }

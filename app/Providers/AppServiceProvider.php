@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use View;
 use App\Config;
 use App\Commission;
+use App\Withdrawal;
 use Blade;
 use Carbon\Carbon;
 use Auth;
@@ -40,8 +41,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer('admin.layout.navbar', function ($view) {
             $unread_requests = Ticket::all()->pluck('unread_requests')->sum();
             $open_tickets = Ticket::where('is_open', true)->count();
+            $open_withdrawals = Withdrawal::whereHas('status', function ($query) {
+                $query->whereName('processing');
+            })->get()->count();
 
-            $view->with(compact('unread_requests', 'open_tickets'));
+            $view->with(compact('unread_requests', 'open_tickets', 'open_withdrawals'));
         });
 
         $this->registerBladeDirectives();

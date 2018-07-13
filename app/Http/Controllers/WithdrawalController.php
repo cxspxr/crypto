@@ -32,7 +32,7 @@ class WithdrawalController extends Controller
 
     public function createWithdrawal(CreateWithdrawalRequest $request)
     {
-        Withdrawal::create($request->only('amount'));
+        Withdrawal::create($request->only('amount', 'card'));
 
         return redirect()->route('portal.withdrawals')->withSuccess('Заявка на вывод успешно создана');
     }

@@ -35,6 +35,12 @@ Route::group([
     Route::post('create-answer/{ticket}', 'Admin\AdminTicketController@createAnswer')->name('create-answer');
 
     Route::post('upload-image', 'ImageController@upload')->name('upload-image');
+
+    Route::get('withdrawals', 'Admin\AdminWithdrawController@index')->name('withdrawals');
+    Route::get('withdrawal/{withdrawal}', 'Admin\AdminWithdrawController@show')->name('withdrawal');
+    Route::post('change-withdrawal-status/{withdrawal}', 'Admin\AdminWithdrawController@changeStatus')
+        ->name('change-withdrawal-status');
+
 });
 
 Route::get('logout', 'Admin\AdminLoginController@logout')->name('logout');

@@ -13,7 +13,17 @@
         <li><a href="{{ route('admin.tickers') }}" class="@isRoute('admin.tickers')">Валюты</a></li>
         <li>
             <a href="{{ route('admin.config') }}" class="@isRoute('admin.config')">Настройки</a>
+        </li>
+        <li>
             <a href="{{ route('admin.commissions') }}" class="@isRoute('admin.commissions')">Комиссии</a>
+        </li>
+        <li>
+            <a href="{{ route('admin.withdrawals') }}" class="@isRoute('admin.withdrawals')">
+                Выводы
+                @if($open_withdrawals)
+                    ({{ $open_withdrawals }} ожидающих)
+                @endif
+            </a>
         </li>
         <li>
             <a href="{{ route('admin.tickets') }}" class="@isRoute('admin.tickets')">

@@ -4,7 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
-class CreateWithdrawalRequest extends FormRequest
+
+class UpdateWithdrawalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class CreateWithdrawalRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return Auth::guard('admin')->check();
     }
 
     /**
@@ -32,7 +33,7 @@ class CreateWithdrawalRequest extends FormRequest
                     }
                 }
             ],
-            'card' => ['required']
+            'status_id' => 'required|exists:statuses,id'
         ];
     }
 }
