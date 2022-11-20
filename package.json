@@ -11,7 +11,7 @@
     },
     "devDependencies": {},
     "dependencies": {
-        "autoprefixer": "^8.6.0",
+        "autoprefixer": "^10.0.0",
         "autoprefixer-stylus": "^0.14.0",
         "babel-core": "^6.26.3",
         "babel-loader": "^7.1.4",
